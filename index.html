@@ -1,0 +1,1716 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<meta name="theme-color" content="#F5F2EA" />
+<!-- SEO ============================================================= -->
+<title>千葉サッカークラブ ｜ 千葉SC ｜ 千葉市美浜区 ｜ TOP・Futsal・U-18・U-15・U-12・School</title>
+<meta name="description" content="千葉市美浜区を拠点に活動する千葉サッカークラブ（千葉SC）公式。1999年創設。TOP・Futsal・U-18・U-15・U-12・Schoolの一貫指導。U-15／U-18セレクション、サッカースクール随時募集中。" />
+<meta name="keywords" content="千葉サッカークラブ,千葉SC,千葉市美浜区,U-15,U-18,セレクション,Futsal,ジュニアユース,サッカースクール,体験会" />
+<meta property="og:title" content="千葉サッカークラブ ｜ 千葉SC ｜ 千葉市美浜区" />
+<meta property="og:description" content="千葉市からJリーグ・Fリーグへ。1999年創設、TOP・Futsal・U-18・U-15・U-12・Schoolの一貫育成クラブ。" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="ja_JP" />
+<link rel="canonical" href="/" />
+<!-- 構造化データ：地域スポーツ団体 ----------------------------------- -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsClub",
+  "name": "千葉サッカークラブ",
+  "alternateName": ["千葉SC", "Chiba Soccer Club"],
+  "sport": ["Soccer", "Futsal"],
+  "foundingDate": "1999",
+  "areaServed": "千葉県千葉市美浜区",
+  "url": "/",
+  "email": "chibasc@hotmail.com",
+  "sameAs": [
+    "https://www.instagram.com/chibasc/",
+    "https://twitter.com/BayDreams1999"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "addressCountry": "JP",
+    "addressRegion": "千葉県",
+    "addressLocality": "千葉市美浜区",
+    "streetAddress": "高洲1-16-20-103"
+  }
+}
+</script>
+
+<!-- フォント：和文セリフ＋和文サンセリフ＋等幅 ------------------------ -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" />
+
+<!-- ===== Design tokens ============================================== -->
+<style id="tokens">
+  /*
+   * 千葉サッカークラブ Design Tokens
+   * すべての色・余白・タイポはここで管理。WordPress化時は
+   *   wp_add_inline_style() などで上書き可能な変数として供給する。
+   */
+  :root {
+    /* Color — Shizuka (静) palette */
+    --bg:        #F5F2EA;   /* 暖かみのあるオフホワイト */
+    --bg-2:      #EBE7DB;   /* セクション分節用 */
+    --surface:   #FFFFFF;
+    --ink:       #14130F;   /* 暖色寄りニアブラック */
+    --ink-2:     #3A382F;
+    --muted:     #6E6A60;
+    --line:      #D9D4C5;
+    --pitch:     oklch(0.34 0.05 155);   /* 深い緑（芝の暗示） */
+    --pitch-ink: oklch(0.22 0.04 155);
+    --sand:      oklch(0.82 0.03 75);
+
+    /* Typography */
+    --serif: "Noto Serif JP", "Hiragino Mincho ProN", "游明朝", serif;
+    --sans:  "Noto Sans JP", "Hiragino Kaku Gothic ProN", "游ゴシック", system-ui, sans-serif;
+    --mono:  "JetBrains Mono", ui-monospace, "SFMono-Regular", monospace;
+
+    /* Scale */
+    --step-0: clamp(0.875rem, 0.85rem + 0.1vw, 0.95rem);
+    --step-1: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+    --step-2: clamp(1.125rem, 1.05rem + 0.4vw, 1.375rem);
+    --step-3: clamp(1.5rem, 1.3rem + 0.8vw, 2rem);
+    --step-4: clamp(2rem, 1.6rem + 1.8vw, 3rem);
+    --step-5: clamp(2.75rem, 2rem + 3.2vw, 5rem);
+    --step-6: clamp(3.5rem, 2.4rem + 5vw, 7rem);
+
+    /* Spacing — 8px base */
+    --s-1: .25rem;  --s-2: .5rem;  --s-3: .75rem;
+    --s-4: 1rem;    --s-5: 1.5rem; --s-6: 2rem;
+    --s-7: 3rem;    --s-8: 4.5rem; --s-9: 7rem;  --s-10: 10rem;
+
+    /* Misc */
+    --radius: 2px;            /* シャープな矩形を基本に */
+    --radius-pill: 999px;
+    --container: 1280px;
+    --gutter: clamp(1.25rem, 4vw, 3rem);
+    --ease: cubic-bezier(.2,.6,.2,1);
+    --dur: .5s;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+
+<!-- ===== Base & layout ============================================== -->
+<style id="base">
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: var(--step-1);
+    line-height: 1.7;
+    font-feature-settings: "palt";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  img, svg { display: block; max-width: 100%; height: auto; }
+  a { color: inherit; text-underline-offset: .2em; text-decoration-thickness: 1px; }
+  button { font: inherit; }
+
+  h1, h2, h3, h4 {
+    font-family: var(--serif);
+    font-weight: 700;
+    letter-spacing: .02em;
+    line-height: 1.25;
+    margin: 0;
+    color: var(--ink);
+  }
+  p  { margin: 0; text-wrap: pretty; }
+
+  .container {
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  /* セクション基本：縦に長く呼吸する */
+  .section { padding-block: var(--s-9); }
+  @media (max-width: 720px) { .section { padding-block: var(--s-8); } }
+
+  /* eyebrow（小見出し） */
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: .75rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: inline-flex; align-items: center; gap: .6em;
+  }
+  .eyebrow::before {
+    content: ""; width: 1.25em; height: 1px;
+    background: currentColor; display: inline-block;
+  }
+
+  /* 二段組 (見出し + 本文) — 建築系ブランド風 */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-7);
+  }
+  @media (min-width: 900px) {
+    .grid-2 { grid-template-columns: 5fr 6fr; gap: var(--s-9); }
+    .grid-2--narrow { grid-template-columns: 4fr 7fr; }
+  }
+</style>
+
+<!-- ===== Components ================================================= -->
+<style id="components">
+  /* --- Buttons ------------------------------------------------------ */
+  .btn {
+    display: inline-flex; align-items: center; gap: .8em;
+    padding: .9em 1.5em;
+    font-family: var(--sans); font-size: var(--step-0); font-weight: 500;
+    letter-spacing: .04em;
+    border: 1px solid var(--ink); background: var(--ink); color: var(--bg);
+    border-radius: var(--radius);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background var(--dur) var(--ease), color var(--dur) var(--ease),
+                transform var(--dur) var(--ease);
+  }
+  .btn:hover { background: var(--pitch); border-color: var(--pitch); }
+  .btn:active { transform: translateY(1px); }
+  .btn .arrow { transition: transform var(--dur) var(--ease); }
+  .btn:hover .arrow { transform: translateX(4px); }
+
+  .btn--ghost { background: transparent; color: var(--ink); }
+  .btn--ghost:hover { background: var(--ink); color: var(--bg); }
+
+  .btn--lg { padding: 1.1em 1.8em; font-size: var(--step-1); }
+
+  /* --- Header ------------------------------------------------------- */
+  .header {
+    position: sticky; top: 0; z-index: 50;
+    backdrop-filter: saturate(1.1) blur(10px);
+    -webkit-backdrop-filter: saturate(1.1) blur(10px);
+    background: color-mix(in oklab, var(--bg) 86%, transparent);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease);
+  }
+  .header.is-scrolled { border-bottom-color: var(--line); }
+  .header__inner {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: var(--s-5);
+    height: 72px;
+  }
+  .logo {
+    display: inline-flex; align-items: center; gap: .65em;
+    text-decoration: none; color: var(--ink);
+    font-family: var(--serif); font-weight: 700; font-size: 1.0625rem;
+    letter-spacing: .05em;
+  }
+  .logo__mark {
+    width: 28px; height: 28px;
+    border: 1.5px solid var(--ink);
+    display: grid; place-items: center;
+    background: var(--ink); color: var(--bg);
+    font-family: var(--mono); font-size: 12px; font-weight: 500;
+    letter-spacing: 0;
+  }
+  .logo__sub { color: var(--muted); font-family: var(--mono); font-size: .7rem;
+                letter-spacing: .15em; font-weight: 400; }
+  .nav {
+    display: none;
+    gap: var(--s-6);
+    align-items: center;
+  }
+  @media (min-width: 960px) { .nav { display: flex; } }
+  .nav a {
+    text-decoration: none; color: var(--ink-2); font-size: .9375rem;
+    position: relative;
+    padding-block: .25em;
+  }
+  .nav a::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
+    height: 1px; background: var(--ink); transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform var(--dur) var(--ease);
+  }
+  .nav a:hover::after { transform: scaleX(1); }
+  .header__cta { display: none; }
+  @media (min-width: 720px) { .header__cta { display: inline-flex; } }
+
+  /* mobile menu toggle */
+  .menu-btn {
+    width: 44px; height: 44px;
+    border: 1px solid var(--ink);
+    background: transparent;
+    display: grid; place-items: center;
+    cursor: pointer;
+    border-radius: var(--radius);
+  }
+  @media (min-width: 960px) { .menu-btn { display: none; } }
+  .menu-btn span {
+    display: block; width: 18px; height: 1px;
+    background: var(--ink); position: relative;
+  }
+  .menu-btn span::before, .menu-btn span::after {
+    content: ""; position: absolute; left: 0; width: 18px; height: 1px;
+    background: var(--ink); transition: transform var(--dur) var(--ease);
+  }
+  .menu-btn span::before { top: -6px; }
+  .menu-btn span::after  { top:  6px; }
+  body.menu-open .menu-btn span { background: transparent; }
+  body.menu-open .menu-btn span::before { transform: translateY(6px) rotate(45deg); }
+  body.menu-open .menu-btn span::after  { transform: translateY(-6px) rotate(-45deg); }
+
+  /* mobile menu drawer */
+  .drawer {
+    position: fixed; inset: 72px 0 0 0;
+    background: var(--bg);
+    transform: translateY(-110%);
+    transition: transform .55s var(--ease);
+    z-index: 40;
+    overflow-y: auto;
+  }
+  body.menu-open .drawer { transform: translateY(0); }
+  .drawer__inner { padding: var(--s-6) var(--gutter) var(--s-9); display: grid; gap: var(--s-5); }
+  .drawer a {
+    font-family: var(--serif); font-size: var(--step-3); font-weight: 700;
+    text-decoration: none; color: var(--ink);
+    border-bottom: 1px solid var(--line);
+    padding-block: var(--s-4);
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .drawer a small { font-family: var(--mono); font-size: .7rem; color: var(--muted); font-weight: 400; }
+
+  /* --- Hero --------------------------------------------------------- */
+  .hero {
+    position: relative;
+    padding-block: var(--s-8) var(--s-9);
+    overflow: hidden;
+  }
+  .hero__inner { position: relative; z-index: 2; }
+  .hero__meta {
+    display: flex; gap: var(--s-5); align-items: center;
+    font-family: var(--mono); font-size: .75rem; color: var(--muted);
+    letter-spacing: .12em;
+    margin-bottom: var(--s-6);
+  }
+  .hero__meta span { display: inline-flex; gap: .5em; }
+  .hero__meta b { color: var(--ink); font-weight: 500; }
+
+  .hero__title {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: var(--step-6);
+    line-height: 1.1;
+    letter-spacing: .01em;
+    margin-bottom: var(--s-6);
+  }
+  .hero__title .em { color: var(--pitch); }
+  .hero__title .br { display: block; }
+
+  .hero__lead {
+    max-width: 36ch;
+    color: var(--ink-2);
+    font-size: var(--step-2);
+    line-height: 1.85;
+    margin-bottom: var(--s-7);
+  }
+  .hero__cta { display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center; }
+
+  .hero__visual {
+    position: relative;
+    margin-top: var(--s-8);
+    aspect-ratio: 16 / 9;
+    background: var(--bg-2);
+    overflow: hidden;
+    border-radius: var(--radius);
+  }
+  /* 写真プレースホルダ：薄いストライプ＋説明 */
+  .placeholder {
+    width: 100%; height: 100%;
+    background:
+      repeating-linear-gradient( 135deg,
+        color-mix(in oklab, var(--ink) 5%, transparent) 0 1px,
+        transparent 1px 14px),
+      var(--bg-2);
+    display: grid; place-items: center;
+    color: var(--muted); font-family: var(--mono); font-size: .75rem;
+    letter-spacing: .12em; text-transform: uppercase;
+    text-align: center; padding: 1rem;
+  }
+  .placeholder--dark {
+    background:
+      repeating-linear-gradient( 135deg,
+        color-mix(in oklab, #fff 8%, transparent) 0 1px,
+        transparent 1px 14px),
+      var(--pitch-ink);
+    color: color-mix(in oklab, #fff 70%, transparent);
+  }
+
+  .hero__index {
+    position: absolute; right: 0; top: 0;
+    font-family: var(--mono); font-size: .75rem; color: var(--muted);
+    letter-spacing: .12em;
+    border-left: 1px solid var(--line);
+    padding: var(--s-3) var(--s-4);
+    line-height: 1.6;
+    display: none;
+  }
+  @media (min-width: 1100px) { .hero__index { display: block; } }
+  .hero__index b { color: var(--ink); font-weight: 500; }
+
+  /* --- Stats strip -------------------------------------------------- */
+  .stats {
+    border-block: 1px solid var(--line);
+    padding-block: var(--s-6);
+  }
+  .stats__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s-5);
+  }
+  @media (min-width: 720px) { .stats__grid { grid-template-columns: repeat(4, 1fr); } }
+  .stat__num {
+    font-family: var(--serif); font-weight: 700;
+    font-size: var(--step-5); line-height: 1; letter-spacing: 0;
+    display: flex; align-items: baseline; gap: .15em;
+  }
+  .stat__num small { font-family: var(--mono); font-size: .8rem; color: var(--muted); font-weight: 400; }
+  .stat__label { color: var(--muted); font-size: .85rem; margin-top: var(--s-2); letter-spacing: .04em; }
+
+  /* --- Philosophy section ------------------------------------------ */
+  .philosophy__title {
+    font-size: var(--step-5);
+    line-height: 1.3;
+    max-width: 18ch;
+  }
+  .philosophy__lead { color: var(--ink-2); font-size: var(--step-2); line-height: 1.95; }
+  .philosophy__body { color: var(--ink-2); margin-top: var(--s-5); }
+  .pillars {
+    margin-top: var(--s-7);
+    display: grid;
+    gap: 1px;
+    background: var(--line);
+    border-block: 1px solid var(--line);
+  }
+  @media (min-width: 720px) { .pillars { grid-template-columns: repeat(3, 1fr); } }
+  .pillar {
+    background: var(--bg);
+    padding: var(--s-6) var(--s-5);
+    display: grid; gap: var(--s-3);
+  }
+  .pillar__num { font-family: var(--mono); font-size: .75rem; color: var(--muted); letter-spacing: .15em; }
+  .pillar h3 { font-size: var(--step-3); }
+
+  /* --- Categories (teams) ------------------------------------------ */
+  #categories { background: var(--bg-2); }
+  .categories__head {
+    display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between;
+    gap: var(--s-5); margin-bottom: var(--s-7);
+  }
+  .categories__head h2 { font-size: var(--step-5); max-width: 16ch; }
+
+  .cards {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--s-5);
+  }
+  @media (min-width: 720px) { .cards { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px) { .cards { grid-template-columns: repeat(3, 1fr); } }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: var(--s-5);
+    display: grid; gap: var(--s-4);
+    transition: transform var(--dur) var(--ease), border-color var(--dur) var(--ease);
+    text-decoration: none; color: inherit;
+    cursor: pointer;
+  }
+  .card:hover { border-color: var(--ink); transform: translateY(-3px); }
+  .card__media {
+    aspect-ratio: 4 / 3;
+    background: var(--bg-2);
+    overflow: hidden;
+    margin: calc(var(--s-5) * -1) calc(var(--s-5) * -1) 0;
+  }
+  .card__index {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-family: var(--mono); font-size: .75rem; color: var(--muted);
+    letter-spacing: .12em;
+  }
+  .card h3 { font-size: var(--step-3); margin-top: var(--s-1); }
+  .card__meta {
+    color: var(--muted); font-size: .85rem;
+    display: flex; gap: var(--s-4); flex-wrap: wrap;
+    border-top: 1px solid var(--line); padding-top: var(--s-3);
+  }
+  .card__meta span b { color: var(--ink); font-weight: 500; }
+  .card__cta {
+    display: inline-flex; align-items: center; gap: .5em;
+    font-size: .85rem; font-family: var(--mono); letter-spacing: .1em;
+    color: var(--ink);
+  }
+
+  /* --- Schedule / Results table ------------------------------------ */
+  .matches {
+    border-block: 1px solid var(--line);
+  }
+  .matches__row {
+    display: grid;
+    grid-template-columns: 60px 1fr 1fr;
+    gap: var(--s-4);
+    padding: var(--s-5) 0;
+    border-bottom: 1px solid var(--line);
+    align-items: center;
+  }
+  .matches__row:last-child { border-bottom: 0; }
+  @media (min-width: 720px) {
+    .matches__row { grid-template-columns: 96px 80px 1fr 1fr 120px; }
+  }
+  .matches__date {
+    font-family: var(--mono); font-size: .8rem; color: var(--muted);
+    letter-spacing: .05em; line-height: 1.4;
+  }
+  .matches__date b { display: block; color: var(--ink); font-size: 1.4rem; font-weight: 500; line-height: 1; margin-bottom: 4px; }
+  .matches__cat {
+    font-family: var(--mono); font-size: .75rem;
+    color: var(--ink); letter-spacing: .1em;
+    border: 1px solid var(--line); padding: .25em .6em;
+    justify-self: start;
+    display: none;
+  }
+  @media (min-width: 720px) { .matches__cat { display: inline-block; } }
+  .matches__teams {
+    font-family: var(--serif); font-weight: 500; font-size: var(--step-2);
+    line-height: 1.4;
+  }
+  .matches__teams .vs { color: var(--muted); margin-inline: .6em; font-family: var(--mono); font-size: .85rem; }
+  .matches__score {
+    font-family: var(--mono); font-size: 1rem; color: var(--muted);
+  }
+  .matches__score b { color: var(--ink); font-weight: 500; }
+  .matches__venue { font-size: .85rem; color: var(--muted); justify-self: end; display: none; }
+  @media (min-width: 720px) { .matches__venue { display: block; } }
+  .badge--win  { color: var(--pitch); }
+  .badge--up   { color: var(--ink-2); }
+
+  /* --- News --------------------------------------------------------- */
+  .news__head {
+    display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between;
+    gap: var(--s-5); margin-bottom: var(--s-6);
+  }
+  .news__list { display: grid; gap: 0; border-top: 1px solid var(--line); }
+  .news__item {
+    display: grid; grid-template-columns: minmax(0,1fr); gap: var(--s-2);
+    padding: var(--s-5) 0;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none; color: inherit;
+    transition: padding var(--dur) var(--ease);
+  }
+  .news__item:hover { padding-inline: var(--s-3); }
+  @media (min-width: 720px) {
+    .news__item { grid-template-columns: 130px 110px 1fr auto; align-items: baseline; gap: var(--s-5); }
+  }
+  .news__date { font-family: var(--mono); font-size: .8rem; color: var(--muted); letter-spacing: .08em; }
+  .news__tag {
+    font-family: var(--mono); font-size: .7rem; letter-spacing: .12em;
+    color: var(--ink); border: 1px solid var(--line); padding: .2em .5em;
+    justify-self: start; text-transform: uppercase;
+  }
+  .news__title { font-size: var(--step-1); font-family: var(--sans); font-weight: 500; line-height: 1.55; }
+  .news__arrow { color: var(--muted); display: none; }
+  @media (min-width: 720px) { .news__arrow { display: inline; } }
+
+  /* --- Access ------------------------------------------------------- */
+  #access { background: var(--bg-2); }
+  .access__grid {
+    display: grid; grid-template-columns: minmax(0,1fr); gap: var(--s-6);
+  }
+  @media (min-width: 900px) { .access__grid { grid-template-columns: 5fr 6fr; gap: var(--s-7); } }
+  .access__map {
+    aspect-ratio: 4 / 3;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    position: relative;
+  }
+  .access__map svg { width: 100%; height: 100%; }
+  .access__list dt { font-family: var(--mono); font-size: .7rem; color: var(--muted); letter-spacing: .12em; text-transform: uppercase; }
+  .access__list dd { margin: var(--s-1) 0 var(--s-5); font-size: var(--step-1); }
+  .access__list dd:last-child { margin-bottom: 0; }
+
+  /* --- CTA banner --------------------------------------------------- */
+  .ctaband {
+    background: var(--ink); color: var(--bg);
+    position: relative; overflow: hidden;
+  }
+  .ctaband__inner {
+    padding-block: var(--s-9);
+    display: grid; gap: var(--s-6);
+  }
+  @media (min-width: 900px) {
+    .ctaband__inner { grid-template-columns: 1fr auto; align-items: center; }
+  }
+  .ctaband h2 {
+    color: var(--bg); font-size: var(--step-5); max-width: 20ch;
+    line-height: 1.2;
+  }
+  .ctaband__sub { color: color-mix(in oklab, var(--bg) 70%, transparent); margin-top: var(--s-4); max-width: 50ch; }
+  .ctaband .btn {
+    background: var(--bg); border-color: var(--bg); color: var(--ink);
+  }
+  .ctaband .btn--ghost { background: transparent; color: var(--bg); border-color: var(--bg); }
+  .ctaband .btn--ghost:hover { background: var(--bg); color: var(--ink); }
+  .ctaband .btn:hover:not(.btn--ghost) { background: var(--pitch); border-color: var(--pitch); color: var(--bg); }
+  .ctaband__buttons { display: flex; flex-wrap: wrap; gap: var(--s-3); }
+
+  /* --- Footer ------------------------------------------------------- */
+  .footer {
+    padding-block: var(--s-8) var(--s-6);
+    background: var(--bg);
+    border-top: 1px solid var(--line);
+  }
+  .footer__top {
+    display: grid; gap: var(--s-7);
+    grid-template-columns: minmax(0,1fr);
+  }
+  @media (min-width: 900px) {
+    .footer__top { grid-template-columns: 1.4fr 1fr 1fr 1fr; }
+  }
+  .footer__brand .logo { font-size: 1.2rem; }
+  .footer__brand p { color: var(--muted); margin-top: var(--s-4); max-width: 32ch; font-size: .9rem; }
+  .footer h4 {
+    font-family: var(--mono); font-size: .7rem; letter-spacing: .15em;
+    color: var(--muted); text-transform: uppercase; font-weight: 500;
+    margin-bottom: var(--s-4);
+  }
+  .footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--s-3); }
+  .footer ul a { text-decoration: none; color: var(--ink-2); font-size: .9375rem; }
+  .footer ul a:hover { color: var(--ink); text-decoration: underline; }
+  .footer__bottom {
+    margin-top: var(--s-8);
+    padding-top: var(--s-5);
+    border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s-3);
+    color: var(--muted); font-family: var(--mono); font-size: .75rem; letter-spacing: .08em;
+  }
+
+  /* --- Reveal animation -------------------------------------------- */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+  .reveal.is-in { opacity: 1; transform: none; }
+
+  /* --- Recruit strip ------------------------------------------------ */
+  .recruit { background: var(--bg-2); }
+  .recruit__grid {
+    display: grid; gap: 1px;
+    grid-template-columns: 1fr;
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-top: var(--s-6);
+  }
+  @media (min-width: 720px) { .recruit__grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1024px){ .recruit__grid { grid-template-columns: repeat(3, 1fr); } }
+  .recruit__cell {
+    background: var(--bg);
+    padding: var(--s-6) var(--s-5);
+    display: grid; gap: var(--s-3);
+    text-decoration: none; color: inherit;
+    transition: background var(--dur) var(--ease);
+  }
+  .recruit__cell:hover { background: var(--surface); }
+  .recruit__tag {
+    font-family: var(--mono); font-size: .7rem; letter-spacing: .14em;
+    color: var(--pitch); text-transform: uppercase;
+  }
+  .recruit__cell h3 { font-size: 1.25rem; line-height: 1.5; font-family: var(--serif); }
+  .recruit__cta {
+    margin-top: auto;
+    display: inline-flex; align-items: center; gap: .5em;
+    font-family: var(--mono); font-size: .8rem; letter-spacing: .08em;
+    border-top: 1px solid var(--line); padding-top: var(--s-3);
+  }
+  /* --- Selection ---------------------------------------------------- */
+  .selection { background: var(--ink); color: var(--bg); }
+  .selection h2 { color: var(--bg); }
+  .selection .eyebrow { color: color-mix(in oklab, var(--bg) 50%, transparent); }
+  .selection__grid { display: grid; gap: var(--s-5); margin-top: var(--s-7); }
+  @media (min-width: 720px) { .selection__grid { grid-template-columns: 1fr 1fr; } }
+  .selection__card {
+    border: 1px solid color-mix(in oklab, var(--bg) 25%, transparent);
+    padding: var(--s-6);
+    display: grid; gap: var(--s-4);
+    transition: background var(--dur) var(--ease);
+    text-decoration: none; color: inherit;
+  }
+  .selection__card:hover { background: color-mix(in oklab, var(--bg) 6%, transparent); }
+  .selection__num {
+    font-family: var(--mono); font-size: .75rem; letter-spacing: .14em;
+    color: color-mix(in oklab, var(--bg) 60%, transparent);
+  }
+  .selection__card h3 {
+    color: var(--bg); font-family: var(--serif); font-weight: 700;
+    font-size: var(--step-4); line-height: 1.15;
+  }
+  .selection__card p { color: color-mix(in oklab, var(--bg) 70%, transparent); }
+  .selection__card .pill {
+    display: inline-flex; gap: .6em; padding: .3em .7em;
+    border: 1px solid color-mix(in oklab, var(--bg) 30%, transparent);
+    font-family: var(--mono); font-size: .7rem; letter-spacing: .1em;
+    width: fit-content;
+  }
+  .selection__card .arrow { margin-left: auto; }
+
+  /* --- Staff / OB / Partner / BD ----------------------------------- */
+  .ob__grid {
+    display: grid; gap: var(--s-5);
+    grid-template-columns: 1fr;
+    margin-top: var(--s-6);
+  }
+  @media (min-width: 720px) { .ob__grid { grid-template-columns: repeat(2,1fr); } }
+  @media (min-width: 1024px){ .ob__grid { grid-template-columns: repeat(4,1fr); } }
+  .ob__item {
+    border-top: 1px solid var(--line);
+    padding-top: var(--s-4);
+  }
+  .ob__name { font-family: var(--serif); font-weight: 700; font-size: var(--step-2); }
+  .ob__pos { font-family: var(--mono); font-size: .7rem; color: var(--pitch); letter-spacing: .12em; }
+  .ob__current { font-size: .9rem; color: var(--ink-2); margin-top: var(--s-2); }
+  .ob__path { font-size: .75rem; color: var(--muted); margin-top: var(--s-2); line-height: 1.6; }
+
+  .partners__grid {
+    display: grid; gap: 1px;
+    grid-template-columns: repeat(2,1fr);
+    background: var(--line);
+    border: 1px solid var(--line);
+    margin-top: var(--s-6);
+  }
+  @media (min-width: 720px) { .partners__grid { grid-template-columns: repeat(4,1fr); } }
+  @media (min-width: 1024px){ .partners__grid { grid-template-columns: repeat(6,1fr); } }
+  .partner {
+    background: var(--surface);
+    aspect-ratio: 3/2;
+    display: grid; place-items: center;
+    color: var(--muted); font-family: var(--mono); font-size: .7rem;
+    letter-spacing: .12em; text-align: center; padding: 1rem;
+  }
+
+  .bd { background: var(--bg-2); }
+  .bd__grid { display: grid; gap: var(--s-6); }
+  @media (min-width: 900px) { .bd__grid { grid-template-columns: 5fr 6fr; gap: var(--s-7); } }
+  .bd__benefits { display: grid; gap: var(--s-4); margin-top: var(--s-5); }
+  .bd__benefit { display: grid; grid-template-columns: auto 1fr; gap: 1.25rem; padding: var(--s-4) 0; border-top: 1px solid var(--line); }
+  .bd__benefit b { font-family: var(--mono); font-size: .7rem; color: var(--muted); letter-spacing: .15em; padding-top: .35em; }
+  .bd__benefit p { font-size: .9rem; }
+  .bd__benefit p strong { display: block; font-family: var(--serif); font-size: 1.1rem; font-weight: 500; margin-bottom: .25em; }
+
+  /* --- Staff -------------------------------------------------------- */
+  .staff__grid {
+    display: grid; gap: var(--s-5);
+    grid-template-columns: 1fr;
+    margin-top: var(--s-6);
+  }
+  @media (min-width: 720px) { .staff__grid { grid-template-columns: repeat(2,1fr); } }
+  @media (min-width: 1024px){ .staff__grid { grid-template-columns: repeat(3,1fr); } }
+  .staff__item {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    padding: var(--s-5);
+    display: grid; gap: var(--s-3);
+  }
+  .staff__role { font-family: var(--mono); font-size: .7rem; color: var(--pitch); letter-spacing: .14em; }
+  .staff__name { font-family: var(--serif); font-weight: 700; font-size: var(--step-3); line-height: 1.2; }
+  .staff__name small { display:block; font-family: var(--mono); font-weight: 400; font-size: .7rem; color: var(--muted); letter-spacing: .1em; margin-top: 6px; }
+  .staff__bio { color: var(--muted); font-size: .85rem; }
+
+  /* --- Social links ------------------------------------------------- */
+  .social { display: flex; gap: var(--s-3); margin-top: var(--s-4); }
+  .social a {
+    width: 40px; height: 40px;
+    border: 1px solid var(--line);
+    display: grid; place-items: center;
+    text-decoration: none; color: var(--ink);
+    transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+    font-family: var(--mono); font-size: .65rem; letter-spacing: .08em;
+  }
+  .social a:hover { background: var(--ink); color: var(--bg); }
+</style>
+
+</head>
+<body>
+
+<a class="visually-hidden" href="#main"
+   style="position:absolute;left:-9999px;top:auto;"
+   onfocus="this.style.cssText='position:fixed;left:1rem;top:1rem;background:#14130F;color:#F5F2EA;padding:.5rem 1rem;z-index:1000;'">本文へスキップ</a>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="header" data-screen-label="01 Header">
+  <div class="container header__inner">
+    <a class="logo" href="#" aria-label="千葉サッカークラブ ホーム">
+      <span class="logo__mark" aria-hidden="true">CSC</span>
+      <span>
+        千葉サッカークラブ
+        <span class="logo__sub" style="display:block;line-height:1;margin-top:2px;">SINCE 1999</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="グローバルナビゲーション">
+      <a href="#news">NEWS</a>
+      <a href="#categories">クラブ紹介</a>
+      <a href="#selection">セレクション</a>
+      <a href="#bdfamily">BDファミリー</a>
+      <a href="#partner">パートナー</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+
+    <a href="#selection" class="btn header__cta" data-cta="header">
+      セレクション申込
+      <svg class="arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+        <path d="M1 5h12m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/>
+      </svg>
+    </a>
+
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="drawer" aria-label="メニュー">
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- mobile drawer -->
+<div class="drawer" id="drawer" role="dialog" aria-label="メニュー">
+  <div class="drawer__inner">
+    <a href="#news">NEWS <small>お知らせ</small></a>
+    <a href="#categories">クラブ紹介 <small>TOP / Futsal / U-18 / U-15 / U-12 / School</small></a>
+    <a href="#selection">セレクション <small>U-15 / U-18</small></a>
+    <a href="#staff">選手・スタッフ <small>Players & Staff</small></a>
+    <a href="#ob">OB情報 <small>Our Alumni</small></a>
+    <a href="#bdfamily">BDファミリーメンバー <small>Bay Dreams Family</small></a>
+    <a href="#partner">パートナー企業 <small>Partners</small></a>
+    <a href="#access">アクセス <small>Access</small></a>
+    <a href="#contact">お問い合わせ <small>Contact</small></a>
+    <a class="btn btn--lg" href="#selection" style="margin-top:1rem;justify-content:center;">セレクション申込</a>
+  </div>
+</div>
+
+<!-- ============================================================
+     MAIN
+     ============================================================ -->
+<main id="main">
+
+  <!-- ===== HERO ============================================== -->
+  <section class="hero" data-screen-label="02 Hero" aria-labelledby="hero-title">
+    <div class="container hero__inner">
+      <div class="hero__meta reveal">
+        <span><b>EST.</b> 1999</span>
+        <span><b>千葉市美浜区</b> ／ 一貫指導</span>
+        <span><b>TOP</b> ・ <b>Futsal</b> ・ <b>U-18</b> – <b>U-12</b> ・ <b>School</b></span>
+      </div>
+
+      <h1 id="hero-title" class="hero__title reveal">
+        <span class="br">千葉市から、</span>
+        <span class="br">J<span class="em">リーグ</span>・F<span class="em">リーグ</span>へ。</span>
+      </h1>
+
+      <p class="hero__lead reveal">
+        トップチームから育成年代まで一貫した指導を提供する、<br />
+        千葉県千葉市美浜区を拠点とする総合フットボールクラブ。
+      </p>
+
+      <div class="hero__cta reveal">
+        <a href="#selection" class="btn btn--lg">
+          セレクションを申し込む
+          <svg class="arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+            <path d="M1 5h12m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+        </a>
+        <a href="#philosophy" class="btn btn--ghost btn--lg">
+          クラブを知る
+        </a>
+      </div>
+
+      <div class="hero__index" aria-hidden="true">
+        <div>INDEX</div>
+        <div><b>01</b> Recruit</div>
+        <div><b>02</b> Philosophy</div>
+        <div><b>03</b> Categories</div>
+        <div><b>04</b> Selection</div>
+        <div><b>05</b> Staff</div>
+        <div><b>06</b> OB</div>
+        <div><b>07</b> Partners</div>
+        <div><b>08</b> Contact</div>
+      </div>
+
+      <figure class="hero__visual reveal" aria-hidden="true">
+        <div class="placeholder placeholder--dark">
+          [ HERO IMAGE / 試合中の選手のワイドショット ]
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ===== STATS STRIP ====================================== -->
+  <section class="stats" aria-label="クラブの実績">
+    <div class="container stats__grid">
+      <div>
+        <div class="stat__num">26<small>年</small></div>
+        <div class="stat__label">活動年数</div>
+      </div>
+      <div>
+        <div class="stat__num">320<small>名</small></div>
+        <div class="stat__label">在籍選手数</div>
+      </div>
+      <div>
+        <div class="stat__num">7<small>カテゴリー</small></div>
+        <div class="stat__label">U-6 から U-15 まで</div>
+      </div>
+      <div>
+        <div class="stat__num">42<small>名</small></div>
+        <div class="stat__label">プロ・強豪校への輩出</div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== RECRUIT HIGHLIGHTS ================================ -->
+  <section id="recruit" class="recruit section" data-screen-label="03 Recruit" aria-labelledby="recruit-title">
+    <div class="container">
+      <div class="categories__head reveal">
+        <div>
+          <span class="eyebrow">01 / Recruit</span>
+          <h2 id="recruit-title" style="margin-top:var(--s-4);">
+            現在募集中。
+          </h2>
+        </div>
+        <p style="color:var(--muted); max-width: 36ch;">
+          トップチーム、フットサル、ジュニアユース、スクール、コーチ、パートナー企業を随時募集しています。
+        </p>
+      </div>
+
+      <div class="recruit__grid reveal">
+        <a href="#selection" class="recruit__cell">
+          <span class="recruit__tag">FEATURED</span>
+          <h3>2026年度 千葉SC TOP　<br>【改革元年】選手募集</h3>
+          <span class="recruit__cta">詳細を見る →</span>
+        </a>
+        <a href="#contact" class="recruit__cell">
+          <span class="recruit__tag">U-7 / 新小1</span>
+          <h3>千葉SC 新U-7　<br>体験練習会 実施中</h3>
+          <span class="recruit__cta">体験申込み →</span>
+        </a>
+        <a href="#selection" class="recruit__cell">
+          <span class="recruit__tag">FUTSAL</span>
+          <h3>千葉SC Futsal　<br>2026年度 セレクション実施中</h3>
+          <span class="recruit__cta">セレクション詳細 →</span>
+        </a>
+        <a href="#categories" class="recruit__cell">
+          <span class="recruit__tag">SCHOOL</span>
+          <h3>千葉SC サッカースクール　<br>選手随時募集中</h3>
+          <span class="recruit__cta">スクール詳細 →</span>
+        </a>
+        <a href="#contact" class="recruit__cell">
+          <span class="recruit__tag">RECRUIT</span>
+          <h3>コーチングスタッフ　<br>募集について</h3>
+          <span class="recruit__cta">詳細を見る →</span>
+        </a>
+        <a href="#partner" class="recruit__cell">
+          <span class="recruit__tag">PARTNER</span>
+          <h3>パートナー企業を　<br>募集しています</h3>
+          <span class="recruit__cta">お問い合わせ →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PHILOSOPHY ======================================== -->
+  <section id="philosophy" class="section" data-screen-label="03 Philosophy" aria-labelledby="philo-title">
+    <div class="container">
+      <div class="grid-2">
+        <div class="reveal">
+          <span class="eyebrow">01 / Philosophy</span>
+          <h2 id="philo-title" class="philosophy__title" style="margin-top:var(--s-4);">
+            一人ひとりの<br />”考える力”を育む。
+          </h2>
+        </div>
+        <div class="reveal">
+          <p class="philosophy__lead">
+            私たちが大切にしているのは、技術や戦術より先に、<br />
+            「自分で判断できる選手であること」。
+          </p>
+          <p class="philosophy__body">
+            ピッチで起こる無数の場面で、子どもたちは何度も立ち止まり、選び、決めます。
+            私たちのコーチは答えを与えません。問いを投げかけ、見守り、
+            時間をかけて自立を促します。サッカーを通じて、社会のどこに行っても
+            通用する「人」を育てる──それが、26年間変わらない私たちの姿勢です。
+          </p>
+        </div>
+      </div>
+
+      <div class="pillars reveal">
+        <div class="pillar">
+          <div class="pillar__num">PILLAR 01</div>
+          <h3>判断する力</h3>
+          <p style="color:var(--muted);">
+            指示で動かさない。場面ごとの正解は選手の中にある。
+            「なぜ？」を問い続けるコーチング。
+          </p>
+        </div>
+        <div class="pillar">
+          <div class="pillar__num">PILLAR 02</div>
+          <h3>続ける力</h3>
+          <p style="color:var(--muted);">
+            上手くいかない日もチームでいる価値を学ぶ。
+            努力の量ではなく、続けるための工夫を教えます。
+          </p>
+        </div>
+        <div class="pillar">
+          <div class="pillar__num">PILLAR 03</div>
+          <h3>支える力</h3>
+          <p style="color:var(--muted);">
+            仲間・家族・地域への感謝。挨拶と道具の手入れ、
+            送迎への気配り。スポーツ以前の所作を磨きます。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CATEGORIES (Teams) ============================== -->
+  <section id="categories" class="section" data-screen-label="04 Teams" aria-labelledby="cat-title">
+    <div class="container">
+      <div class="categories__head reveal">
+        <div>
+          <span class="eyebrow">02 / Teams</span>
+          <h2 id="cat-title" style="margin-top:var(--s-4);">
+            年齢に合わせた、<br />一貫した育成。
+          </h2>
+        </div>
+        <p style="color:var(--muted); max-width: 36ch;">
+          U-6 から U-15 まで、心と身体の発達段階に合わせた
+          独自カリキュラム。すべての学年で体験参加を受付中です。
+        </p>
+      </div>
+
+      <div class="cards" role="list">
+        <a class="card reveal" role="listitem" href="#selection">
+          <div class="card__media"><div class="placeholder placeholder--dark">[ TOP TEAM ]</div></div>
+          <div class="card__index"><span>TOP</span><span>トップチーム</span></div>
+          <h3>TOP</h3>
+          <p style="color:var(--muted); font-size:.9rem;">
+            2026年度「改革元年」と位置づけ、千葉から全国を目指すトップチーム。
+          </p>
+          <div class="card__meta">
+            <span>カテゴリー <b>社人</b></span>
+            <span>選手<b>募集中</b></span>
+          </div>
+          <span class="card__cta">TOP 詳細 →</span>
+        </a>
+
+        <a class="card reveal" role="listitem" href="#selection">
+          <div class="card__media"><div class="placeholder placeholder--dark">[ FUTSAL ]</div></div>
+          <div class="card__index"><span>FUTSAL</span><span>フットサル</span></div>
+          <h3>Futsal</h3>
+          <p style="color:var(--muted); font-size:.9rem;">
+            Fリーグを見据えたフットサル部門。2026年度セレクション実施中。
+          </p>
+          <div class="card__meta">
+            <span>カテゴリー <b>社人</b></span>
+            <span>選手<b>募集中</b></span>
+          </div>
+          <span class="card__cta">Futsal 詳細 →</span>
+        </a>
+
+        <a class="card reveal" role="listitem" href="#selection">
+          <div class="card__media"><div class="placeholder">[ U-18 PHOTO ]</div></div>
+          <div class="card__index"><span>U-18</span><span>高校世代</span></div>
+          <h3>U-18</h3>
+          <p style="color:var(--muted); font-size:.9rem;">
+            高校世代カテゴリー。Jユースカップ出場など全国を目指す現場。
+          </p>
+          <div class="card__meta">
+            <span>高校 <b>1–3年</b></span>
+            <span>セレ<b>実施中</b></span>
+          </div>
+          <span class="card__cta">U-18 セレクション →</span>
+        </a>
+
+        <a class="card reveal" role="listitem" href="#selection">
+          <div class="card__media"><div class="placeholder">[ U-15 PHOTO ]</div></div>
+          <div class="card__index"><span>U-15</span><span>ジュニアユース</span></div>
+          <h3>U-15</h3>
+          <p style="color:var(--muted); font-size:.9rem;">
+            中学世代。高校サッカーへの架け橋として、技術・身体・人格を鍛える。
+          </p>
+          <div class="card__meta">
+            <span>中学 <b>1–3年</b></span>
+            <span>セレ<b>実施中</b></span>
+          </div>
+          <span class="card__cta">U-15 セレクション →</span>
+        </a>
+
+        <a class="card reveal" role="listitem" href="#contact">
+          <div class="card__media"><div class="placeholder">[ U-12 PHOTO ]</div></div>
+          <div class="card__index"><span>U-12</span><span>ジュニア</span></div>
+          <h3>U-12</h3>
+          <p style="color:var(--muted); font-size:.9rem;">
+            小学世代。個人技とチームプレーを同時に育てる育成カテゴリー。
+          </p>
+          <div class="card__meta">
+            <span>小学 <b>1–6年</b></span>
+            <span>体験<b>受付中</b></span>
+          </div>
+          <span class="card__cta">U-12 詳細 →</span>
+        </a>
+
+        <a class="card reveal" role="listitem" href="#contact">
+          <div class="card__media"><div class="placeholder">[ SCHOOL PHOTO ]</div></div>
+          <div class="card__index"><span>SCHOOL</span><span>スクール部門</span></div>
+          <h3>School</h3>
+          <p style="color:var(--muted); font-size:.9rem;">
+            サッカースクール。選手登録なしで参加可能、選手随時募集中。
+          </p>
+          <div class="card__meta">
+            <span><b>幼児〜小学生</b></span>
+            <span>体験<b>受付中</b></span>
+          </div>
+          <span class="card__cta">スクール申込 →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MATCHES =========================================== -->
+  <section id="matches" class="section" data-screen-label="05 Matches" aria-labelledby="match-title">
+    <div class="container">
+      <div class="categories__head reveal">
+        <div>
+          <span class="eyebrow">03 / Matches</span>
+          <h2 id="match-title" style="margin-top:var(--s-4);">
+            直近の試合<br />結果と予定。
+          </h2>
+        </div>
+        <div style="display:flex; gap:.5rem; flex-wrap:wrap;" role="tablist" aria-label="カテゴリー切替">
+          <button class="btn btn--ghost match-tab is-active" data-tab="upcoming" role="tab" aria-selected="true">予定</button>
+          <button class="btn btn--ghost match-tab" data-tab="results" role="tab" aria-selected="false">結果</button>
+        </div>
+      </div>
+
+      <div class="matches reveal" id="matches-list" role="list">
+        <!-- JSで描画 -->
+      </div>
+
+      <div style="margin-top:var(--s-6); display:flex; justify-content:flex-end;">
+        <a href="#" class="btn btn--ghost">すべての試合を見る
+          <svg class="arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+            <path d="M1 5h12m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== NEWS ============================================== -->
+  <section id="news" class="section" style="background:var(--bg-2);" data-screen-label="06 News" aria-labelledby="news-title">
+    <div class="container">
+      <div class="news__head reveal">
+        <div>
+          <span class="eyebrow">04 / News</span>
+          <h2 id="news-title" style="margin-top:var(--s-4); font-size:var(--step-5);">お知らせ。</h2>
+        </div>
+        <div style="display:flex; gap:.5rem; flex-wrap:wrap;" role="tablist" aria-label="お知らせ種別">
+          <button class="btn btn--ghost news-filter is-active" data-tag="all">すべて</button>
+          <button class="btn btn--ghost news-filter" data-tag="club">クラブ</button>
+          <button class="btn btn--ghost news-filter" data-tag="event">イベント</button>
+          <button class="btn btn--ghost news-filter" data-tag="press">メディア</button>
+        </div>
+      </div>
+
+      <div class="news__list" id="news-list" role="list">
+        <!-- JSで描画 -->
+      </div>
+
+      <div style="margin-top:var(--s-6); display:flex; justify-content:flex-end;">
+        <a href="#" class="btn btn--ghost">お知らせ一覧へ
+          <svg class="arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+            <path d="M1 5h12m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== SELECTION ========================================= -->
+  <section id="selection" class="selection section" data-screen-label="06 Selection" aria-labelledby="sel-title">
+    <div class="container">
+      <div>
+        <span class="eyebrow">04 / Selection</span>
+        <h2 id="sel-title" style="margin-top:var(--s-4); font-size:var(--step-5); line-height:1.2;">
+          セレクション、<br/>受付中。
+        </h2>
+        <p style="color: color-mix(in oklab, var(--bg) 70%, transparent); margin-top: var(--s-4); max-width: 50ch;">
+          U-15、U-18のセレクションを実施しています。
+          体験練習会も並行して開催。ご不明な点はお気軽にお問い合わせください。
+        </p>
+      </div>
+
+      <div class="selection__grid">
+        <a href="#contact" class="selection__card">
+          <span class="selection__num">SELECTION 01</span>
+          <h3>U-15<br/>セレクション</h3>
+          <p>中学世代ジュニアユース。体験練習会を含む複数回の選考を予定。</p>
+          <span class="pill">中学 1–3年</span>
+          <span class="recruit__cta">U-15 セレを申し込む
+            <svg class="arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+              <path d="M1 5h12m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.4"/>
+            </svg>
+          </span>
+        </a>
+
+        <a href="#contact" class="selection__card">
+          <span class="selection__num">SELECTION 02</span>
+          <h3>U-18<br/>セレクション</h3>
+          <p>高校世代カテゴリー。2026年度メンバー 追加セレクションも随時受付。</p>
+          <span class="pill">高校 1–3年</span>
+          <span class="recruit__cta">U-18 セレを申し込む
+            <svg class="arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+              <path d="M1 5h12m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.4"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STAFF ============================================= -->
+  <section id="staff" class="section" data-screen-label="07 Staff" aria-labelledby="staff-title">
+    <div class="container">
+      <div class="categories__head reveal">
+        <div>
+          <span class="eyebrow">05 / Players & Staff</span>
+          <h2 id="staff-title" style="margin-top:var(--s-4);">選手・スタッフ。</h2>
+        </div>
+        <p style="color:var(--muted); max-width: 36ch;">
+          トップ / Futsal / U-18 / U-15 / U-14 / U-13 / U-12 各カテゴリーの選手・スタッフ一覧。
+        </p>
+      </div>
+      <div class="staff__grid reveal">
+        <a href="#" class="staff__item">
+          <span class="staff__role">CATEGORY</span>
+          <span class="staff__name">TOP <small>Players & Staff</small></span>
+          <p class="staff__bio">トップチームの選手一覧・スタッフプロフィール。</p>
+          <span class="recruit__cta">一覧を見る →</span>
+        </a>
+        <a href="#" class="staff__item">
+          <span class="staff__role">CATEGORY</span>
+          <span class="staff__name">Futsal <small>Players & Staff</small></span>
+          <p class="staff__bio">フットサルチームの選手・スタッフ一覧。</p>
+          <span class="recruit__cta">一覧を見る →</span>
+        </a>
+        <a href="#" class="staff__item">
+          <span class="staff__role">CATEGORY</span>
+          <span class="staff__name">U-18 <small>Players & Staff</small></span>
+          <p class="staff__bio">U-18 カテゴリーの選手・スタッフプロフィール。</p>
+          <span class="recruit__cta">一覧を見る →</span>
+        </a>
+        <a href="#" class="staff__item">
+          <span class="staff__role">CATEGORY</span>
+          <span class="staff__name">U-15 <small>Players & Staff</small></span>
+          <p class="staff__bio">U-15 カテゴリーの選手・スタッフプロフィール。</p>
+          <span class="recruit__cta">一覧を見る →</span>
+        </a>
+        <a href="#" class="staff__item">
+          <span class="staff__role">CATEGORY</span>
+          <span class="staff__name">U-14 / U-13 / U-12 <small>Players</small></span>
+          <p class="staff__bio">育成カテゴリーの選手一覧。</p>
+          <span class="recruit__cta">一覧を見る →</span>
+        </a>
+        <a href="#" class="staff__item">
+          <span class="staff__role">CLUB</span>
+          <span class="staff__name">Staff <small>Coaches & Front office</small></span>
+          <p class="staff__bio">クラブコーチングスタッフ・フロントスタッフをご紹介。</p>
+          <span class="recruit__cta">一覧を見る →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OB ================================================ -->
+  <section id="ob" class="section" style="background:var(--bg-2);" data-screen-label="08 OB" aria-labelledby="ob-title">
+    <div class="container">
+      <div class="categories__head reveal">
+        <div>
+          <span class="eyebrow">06 / Our Alumni</span>
+          <h2 id="ob-title" style="margin-top:var(--s-4);">千葉SC OB情報。</h2>
+        </div>
+        <p style="color:var(--muted); max-width: 36ch;">
+          クラブを差引いた選手たちは、今もさまざまなフィールドで誠実に隣と向き合っています。
+        </p>
+      </div>
+      <div class="ob__grid reveal">
+        <div class="ob__item">
+          <span class="ob__pos">GK</span>
+          <div class="ob__name">上福元 直人</div>
+          <div class="ob__current">現在　湘南ベルマーレ</div>
+          <div class="ob__path">北貝塚FC → 千葉SC美浜 → 市立船橋高校 → 順天堂大 → 大分トリニータ → 東京ヴェルディ → 徳島ヴォルティス → 京都サンガ → 川崎フロンターレ → 湘南</div>
+        </div>
+        <div class="ob__item">
+          <span class="ob__pos">FW</span>
+          <div class="ob__name">高井 和馬</div>
+          <div class="ob__current">現在　SC相模原</div>
+          <div class="ob__path">つくしSC → 市川カネヅカSC → 帝京長岡高 → 千葉SC U-18 → 日体大 → ザスパ草津 → 鈴市独見他 → 松本山雅FC</div>
+        </div>
+        <div class="ob__item">
+          <span class="ob__pos">FW</span>
+          <div class="ob__name">菅澤 優衣香</div>
+          <div class="ob__current">現在　浦和レッズレディース</div>
+          <div class="ob__path">FC幕西 → 幕張西中学、千葉SCレディース → JFAアカデミー福島 → アルビレックス新潟L → ジェフ千葉L → 洦和L</div>
+        </div>
+        <div class="ob__item">
+          <span class="ob__pos">GK</span>
+          <div class="ob__name">井岡 海都</div>
+          <div class="ob__current">現在　V・ファーレン長崎</div>
+          <div class="ob__path">HAMANO JFC → 千葉SC U-15 → 市立船橋高 → 仙台大 → ベガルタ仙台 → ガイナーレ鳥取 → V・ファーレン長崎</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BD FAMILY ========================================= -->
+  <section id="bdfamily" class="bd section" data-screen-label="09 BD Family" aria-labelledby="bd-title">
+    <div class="container">
+      <div class="bd__grid">
+        <div class="reveal">
+          <span class="eyebrow">07 / Bay Dreams Family</span>
+          <h2 id="bd-title" style="margin-top:var(--s-4);">
+            BDファミリー<br/>メンバー。
+          </h2>
+          <p style="color:var(--muted); margin-top:var(--s-4); max-width:40ch;">
+            千葉SCを応援して下さるサポータークラブ。クラブとともに成長し、長期にわたって伴走していただくための仕組みです。
+          </p>
+          <div style="display:flex; gap:.5rem; margin-top:var(--s-5); flex-wrap:wrap;">
+            <a href="#contact" class="btn">お申込み方法</a>
+            <a href="#contact" class="btn btn--ghost">規約を見る</a>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <div class="bd__benefits">
+            <div class="bd__benefit"><b>BENEFIT 01</b><p><strong>会員専用コンテンツ</strong>試合レポートやレッスン見学の募集、会員限定イベント情報などをご提供。</p></div>
+            <div class="bd__benefit"><b>BENEFIT 02</b><p><strong>パートナー企業特典</strong>協赛企業様による会員限定の割引サービスを順次ご案内。</p></div>
+            <div class="bd__benefit"><b>BENEFIT 03</b><p><strong>会員イベントへのご招待</strong>シーズン終了パーティーやOB話説会など、年間複数回の会員イベント。</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PARTNER =========================================== -->
+  <section id="partner" class="section" data-screen-label="10 Partners" aria-labelledby="partner-title">
+    <div class="container">
+      <div class="categories__head reveal">
+        <div>
+          <span class="eyebrow">08 / Partners</span>
+          <h2 id="partner-title" style="margin-top:var(--s-4);">パートナー企業。</h2>
+        </div>
+        <p style="color:var(--muted); max-width: 36ch;">
+          地域密着を応援してくれるパートナー企業様に支えられています。フラッグパートナーを随時募集しています。
+        </p>
+      </div>
+      <div class="partners__grid reveal" aria-label="パートナー企業ロゴプレースホルダー">
+        <div class="partner">[ ATHLETA ]</div>
+        <div class="partner">[ 森脇工業 ]</div>
+        <div class="partner">[ KEN'S SE ]</div>
+        <div class="partner">[ ONE GARDEN ]</div>
+        <div class="partner">[ 野口写真館 ]</div>
+        <div class="partner">[ 鍋島整形外科 ]</div>
+        <div class="partner">[ ACTIVE CCC ]</div>
+        <div class="partner">[ さかえ寿司 ]</div>
+        <div class="partner">[ ラリースポーツ ]</div>
+        <div class="partner">[ Baden Baden ]</div>
+        <div class="partner">[ OSA Japan ]</div>
+        <div class="partner">[ SAVAS / 明治 ]</div>
+      </div>
+      <div style="margin-top:var(--s-6); display:flex; justify-content:flex-end;">
+        <a href="#contact" class="btn btn--ghost">パートナーシップのお問い合わせ
+          <svg class="arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+            <path d="M1 5h12m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ACCESS ============================================ -->
+  <section id="access" class="section" data-screen-label="07 Access" aria-labelledby="access-title">
+    <div class="container">
+      <div class="categories__head reveal">
+        <div>
+          <span class="eyebrow">05 / Access</span>
+          <h2 id="access-title" style="margin-top:var(--s-4);">活動拠点とアクセス。</h2>
+        </div>
+      </div>
+
+      <div class="access__grid">
+        <figure class="access__map reveal" aria-label="活動拠点の地図プレースホルダ">
+          <svg viewBox="0 0 400 300" aria-hidden="true">
+            <!-- 抽象的な地図プレースホルダ -->
+            <rect width="400" height="300" fill="#FFFFFF"/>
+            <g stroke="#D9D4C5" stroke-width="1">
+              <path d="M0 60 L400 60 M0 120 L400 120 M0 180 L400 180 M0 240 L400 240"/>
+              <path d="M80 0 L80 300 M160 0 L160 300 M240 0 L240 300 M320 0 L320 300"/>
+            </g>
+            <path d="M0 200 Q120 180 200 160 T 400 130" stroke="#6E6A60" stroke-width="1.2" fill="none" opacity=".5"/>
+            <path d="M40 0 Q60 80 120 140 T 240 280" stroke="#6E6A60" stroke-width="1.2" fill="none" opacity=".5"/>
+            <circle cx="220" cy="155" r="10" fill="oklch(0.34 0.05 155)"/>
+            <circle cx="220" cy="155" r="20" fill="none" stroke="oklch(0.34 0.05 155)" stroke-width="1" opacity=".4"/>
+            <text x="240" y="158" font-family="JetBrains Mono" font-size="10" fill="#14130F">CSC HOME GROUND</text>
+          </svg>
+        </figure>
+
+        <dl class="access__list reveal">
+          <dt>HOME GROUND</dt>
+          <dd>千葉県千葉市美浜区高洲1-16-20-103</dd>
+          <dt>SUB GROUNDS</dt>
+          <dd>美浜区内・市内拠点 ／ 学年・カテゴリーにより使用拠点が異なります</dd>
+          <dt>ACCESS</dt>
+          <dd>JR京葉線「海浜幕張」「稲毛海岸」より徒歩・送迎あり</dd>
+          <dt>CONTACT</dt>
+          <dd>
+            <a href="mailto:chibasc@hotmail.com" style="font-family:var(--mono);">chibasc@hotmail.com</a><br/><small style="color:var(--muted);">公式 SNS でも随時情報発信中</small>
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA BANNER ======================================== -->
+  <section id="contact" class="ctaband" data-screen-label="08 CTA" aria-labelledby="cta-title">
+    <div class="container ctaband__inner">
+      <div>
+        <span class="eyebrow" style="color: color-mix(in oklab, var(--bg) 50%, transparent);">06 / Join us</span>
+        <h2 id="cta-title" style="margin-top:var(--s-4);">
+          まずは、ピッチで<br/>会いましょう。
+        </h2>
+        <p class="ctaband__sub">
+          セレクション・体験練習会・スクール体験は随時受付中です。 
+          ご質問のみのお問い合わせも歓迎します。お気軽にご連絡ください。
+        </p>
+      </div>
+      <div class="ctaband__buttons">
+        <a href="#" class="btn btn--lg">
+          セレクションを申し込む
+          <svg class="arrow" width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true">
+            <path d="M1 5h12m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.4"/>
+          </svg>
+        </a>
+        <a href="#" class="btn btn--ghost btn--lg">お問い合わせ</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer" data-screen-label="09 Footer">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <a class="logo" href="#">
+          <span class="logo__mark" aria-hidden="true">CSC</span>
+          <span>千葉サッカークラブ</span>
+        </a>
+        <p>
+          千葉市からJリーグ・Fリーグへ。
+          1999年創設、千葉市美浜区を拠点とする総合フットボールクラブ。
+          TOP・Futsal・U-18・U-15・U-12・School。
+        </p>
+      </div>
+      <div>
+        <h4>CLUB</h4>
+        <ul>
+          <li><a href="#philosophy">クラブについて</a></li>
+          <li><a href="#categories">TOP / Futsal</a></li>
+          <li><a href="#categories">U-18 / U-15 / U-12</a></li>
+          <li><a href="#categories">School</a></li>
+          <li><a href="#staff">選手・スタッフ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>JOIN</h4>
+        <ul>
+          <li><a href="#selection">U-15 セレクション</a></li>
+          <li><a href="#selection">U-18 セレクション</a></li>
+          <li><a href="#bdfamily">BDファミリーメンバー</a></li>
+          <li><a href="#partner">パートナー企業</a></li>
+          <li><a href="#">会員専用</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>CONTACT</h4>
+        <ul>
+          <li><a href="#contact">お問い合わせ</a></li>
+          <li><a href="#news">お知らせ</a></li>
+          <li><a href="#access">アクセス</a></li>
+          <li><a href="mailto:chibasc@hotmail.com">chibasc@hotmail.com</a></li>
+        </ul>
+        <div class="social" aria-label="公式 SNS">
+          <a href="https://www.instagram.com/chibasc/" aria-label="Instagram" target="_blank" rel="noopener">IG</a>
+          <a href="#" aria-label="Facebook" target="_blank" rel="noopener">FB</a>
+          <a href="https://twitter.com/BayDreams1999" aria-label="X (Twitter)" target="_blank" rel="noopener">X</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 1999–2026 CHIBA SOCCER CLUB</span>
+      <span>PRIVACY / TERMS / SITEMAP</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     JS — 軽量で素のJS。WordPress化時は theme/assets/main.js に
+          そのまま wp_enqueue_script() で読み込む想定。
+     ============================================================ -->
+<script>
+(() => {
+  /* ----- 1. Sticky header shadow on scroll ----- */
+  const header = document.querySelector('.header');
+  const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 8);
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ----- 2. Mobile menu ----- */
+  const btn = document.querySelector('.menu-btn');
+  btn.addEventListener('click', () => {
+    const open = document.body.classList.toggle('menu-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.querySelectorAll('.drawer a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.body.classList.remove('menu-open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* ----- 3. Reveal on scroll (IntersectionObserver) ----- */
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (e.isIntersecting) {
+        e.target.classList.add('is-in');
+        io.unobserve(e.target);
+      }
+    }
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* ----- 4. Matches (predefined dataset) -----
+     WordPress化時は WP_Query で カスタム投稿「match」を取得 */
+  const matches = {
+    upcoming: [
+      { date: '2026-05-17', cat: 'U-15', home: '千葉SC', away: 'YOKOHAMA TG', score: '', venue: 'ホーム', kind: 'up' },
+      { date: '2026-05-24', cat: 'U-12', home: '千葉SC', away: 'BLUE WINGS', score: '', venue: 'アウェイ', kind: 'up' },
+      { date: '2026-05-31', cat: 'U-15', home: '千葉SC', away: 'KANTO FC', score: '', venue: 'ホーム', kind: 'up' },
+      { date: '2026-06-07', cat: 'U-9',  home: '千葉SC', away: 'CHIBA UNITED', score: '', venue: 'ホーム', kind: 'up' },
+    ],
+    results: [
+      { date: '2026-05-04', cat: 'U-15', home: '千葉SC', away: 'TOKYO FUTURO',  score: '3-1', venue: 'ホーム',   kind: 'win' },
+      { date: '2026-04-27', cat: 'U-12', home: '千葉SC', away: 'KASHIWA J',     score: '2-2', venue: 'アウェイ', kind: 'draw' },
+      { date: '2026-04-20', cat: 'U-15', home: '千葉SC', away: 'CHIBA UNITED',  score: '1-0', venue: 'ホーム',   kind: 'win' },
+      { date: '2026-04-13', cat: 'U-9',  home: '千葉SC', away: 'NARITA STARS',  score: '4-1', venue: 'アウェイ', kind: 'win' },
+    ],
+  };
+
+  const fmtDate = (iso) => {
+    const d = new Date(iso);
+    const m = String(d.getMonth()+1);
+    const dd = String(d.getDate()).padStart(2,'0');
+    const w = ['日','月','火','水','木','金','土'][d.getDay()];
+    return { top: `${m}.${dd}`, bot: `${d.getFullYear()} (${w})` };
+  };
+
+  const renderMatches = (key) => {
+    const list = document.getElementById('matches-list');
+    list.innerHTML = '';
+    matches[key].forEach(m => {
+      const d = fmtDate(m.date);
+      const row = document.createElement('div');
+      row.className = 'matches__row';
+      row.setAttribute('role','listitem');
+      const badge = m.kind === 'win' ? 'badge--win' : 'badge--up';
+      row.innerHTML = `
+        <div class="matches__date"><b>${d.top}</b>${d.bot}</div>
+        <span class="matches__cat">${m.cat}</span>
+        <div class="matches__teams"><b>${m.home}</b><span class="vs">vs</span>${m.away}</div>
+        <div class="matches__score ${badge}">${m.score ? `<b>${m.score}</b> ${m.kind === 'win' ? 'WIN' : ''}` : 'KICK OFF 14:00'}</div>
+        <div class="matches__venue">${m.venue}</div>
+      `;
+      list.appendChild(row);
+    });
+  };
+  renderMatches('upcoming');
+
+  document.querySelectorAll('.match-tab').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.match-tab').forEach(x => {
+        x.classList.remove('is-active');
+        x.setAttribute('aria-selected', 'false');
+      });
+      b.classList.add('is-active');
+      b.setAttribute('aria-selected','true');
+      renderMatches(b.dataset.tab);
+    });
+  });
+
+  /* style for active tab */
+  const style = document.createElement('style');
+  style.textContent = `
+    .match-tab.is-active, .news-filter.is-active {
+      background: var(--ink); color: var(--bg);
+    }
+    .match-tab, .news-filter { padding: .55em 1.1em; font-size: .85rem; }
+  `;
+  document.head.appendChild(style);
+
+  /* ----- 5. News (predefined dataset) -----
+     WordPress化時は WP_Query で カスタム投稿「news」を取得 */
+  const news = [
+    { date: '2026.05.06', tag: 'event', title: '【受付開始】2026年度 夏季スクール体験会のご案内' },
+    { date: '2026.04.28', tag: 'club',  title: 'U-15 関東リーグ 第3節 ホーム勝利のお知らせ' },
+    { date: '2026.04.21', tag: 'press', title: '地域メディア「千葉ライフ」5月号にて当クラブを掲載いただきました' },
+    { date: '2026.04.10', tag: 'club',  title: '2026年度 新コーチ就任のご報告' },
+    { date: '2026.04.01', tag: 'event', title: 'ジュニアユース セレクション（第二期）申込開始' },
+    { date: '2026.03.20', tag: 'press', title: 'OB選手が J3 デビュー戦に出場しました' },
+  ];
+
+  const renderNews = (tag) => {
+    const list = document.getElementById('news-list');
+    list.innerHTML = '';
+    news.filter(n => tag === 'all' || n.tag === tag).forEach(n => {
+      const a = document.createElement('a');
+      a.href = '#';
+      a.className = 'news__item';
+      a.setAttribute('role','listitem');
+      a.innerHTML = `
+        <span class="news__date">${n.date}</span>
+        <span class="news__tag">${n.tag.toUpperCase()}</span>
+        <span class="news__title">${n.title}</span>
+        <span class="news__arrow">→</span>
+      `;
+      list.appendChild(a);
+    });
+  };
+  renderNews('all');
+  document.querySelectorAll('.news-filter').forEach(b => {
+    b.addEventListener('click', () => {
+      document.querySelectorAll('.news-filter').forEach(x => {
+        x.classList.remove('is-active');
+      });
+      b.classList.add('is-active');
+      renderNews(b.dataset.tag);
+    });
+  });
+
+  /* ----- 6. Smooth in-page anchors (header offset) ----- */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      if (!id) return;
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      const top = target.getBoundingClientRect().top + window.scrollY - 72;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
+  });
+})();
+</script>
+
+<!-- ============================================================
+     TWEAKS — 実装の見え方（カラー・フォント）を切替できるパネル
+     ============================================================ -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<div id="tweaks-mount"></div>
+<script type="text/babel">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "palette": [
+    "#EFEFEC",
+    "#0E0E0F",
+    "oklch(0.45 0.10 240)"
+  ],
+  "displayFont": "Noto Serif JP",
+  "density": "comfortable"
+}/*EDITMODE-END*/;
+
+const PALETTES = [
+  ['#F5F2EA','#14130F','oklch(0.34 0.05 155)'],   // shizuka (default)
+  ['#F2EFE6','#0F1A14','oklch(0.42 0.09 155)'],   // pitch — 緑強め
+  ['#EFEFEC','#0E0E0F','oklch(0.45 0.10 240)'],   // sora — 青系
+  ['#F4EFE7','#1A130E','oklch(0.55 0.13 45)'],    // hi — 暖色アクセント
+];
+
+const FONTS = ['Noto Serif JP','Shippori Mincho','Zen Old Mincho'];
+
+const App = () => {
+  const [t, setTweak] = window.useTweaks(TWEAK_DEFAULTS);
+
+  React.useEffect(() => {
+    const r = document.documentElement;
+    r.style.setProperty('--bg',     t.palette[0]);
+    r.style.setProperty('--ink',    t.palette[1]);
+    r.style.setProperty('--pitch',  t.palette[2]);
+    r.style.setProperty('--bg-2',   `color-mix(in oklab, ${t.palette[0]} 92%, ${t.palette[1]} 8%)`);
+    r.style.setProperty('--line',   `color-mix(in oklab, ${t.palette[0]} 80%, ${t.palette[1]} 20%)`);
+    r.style.setProperty('--ink-2',  `color-mix(in oklab, ${t.palette[1]} 80%, ${t.palette[0]} 20%)`);
+    r.style.setProperty('--muted',  `color-mix(in oklab, ${t.palette[1]} 55%, ${t.palette[0]} 45%)`);
+    r.style.setProperty('--serif',  `"${t.displayFont}", serif`);
+
+    if (t.density === 'compact') {
+      r.style.setProperty('--s-9', '5rem');
+      r.style.setProperty('--s-8', '3.5rem');
+    } else {
+      r.style.removeProperty('--s-9');
+      r.style.removeProperty('--s-8');
+    }
+  }, [t]);
+
+  const { TweaksPanel, TweakSection, TweakColor, TweakSelect, TweakRadio } = window;
+
+  return (
+    <TweaksPanel title="Tweaks">
+      <TweakSection title="Palette">
+        <TweakColor label="配色" value={t.palette}
+          options={PALETTES}
+          onChange={v => setTweak('palette', v)} />
+      </TweakSection>
+      <TweakSection title="Typography">
+        <TweakSelect label="ディスプレイ書体" value={t.displayFont}
+          options={FONTS} onChange={v => setTweak('displayFont', v)} />
+      </TweakSection>
+      <TweakSection title="Layout">
+        <TweakRadio label="余白量" value={t.density}
+          options={[{value:'comfortable', label:'ゆとり'}, {value:'compact', label:'詰め'}]}
+          onChange={v => setTweak('density', v)} />
+      </TweakSection>
+    </TweaksPanel>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById('tweaks-mount'));
+root.render(<App />);
+</script>
+
+</body>
+</html>

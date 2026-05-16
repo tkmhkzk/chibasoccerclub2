@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>千葉サッカークラブ ｜ デザイン設計書</title>
+<meta name="description" content="千葉サッカークラブのHP設計書。UIコンセプト、カラー、タイポ、構成、ワイヤーフレーム、UX意図、SEO設計、WordPress化、拡張ポイント。" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" />
+<style>
+  :root {
+    --bg:#F5F2EA; --bg-2:#EBE7DB; --surface:#FFFFFF;
+    --ink:#14130F; --ink-2:#3A382F; --muted:#6E6A60; --line:#D9D4C5;
+    --pitch:oklch(0.34 0.05 155);
+    --serif:"Noto Serif JP",serif;
+    --sans:"Noto Sans JP",system-ui,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+    --container:1180px;
+    --gutter:clamp(1.25rem,4vw,3rem);
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.75;font-feature-settings:"palt"}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:700;letter-spacing:.02em;line-height:1.3;margin:0}
+  p{margin:0;text-wrap:pretty}
+  a{color:inherit}
+  .container{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:var(--gutter)}
+  .doc{padding-block:5rem 6rem}
+  .eyebrow{font-family:var(--mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);display:inline-flex;align-items:center;gap:.6em}
+  .eyebrow::before{content:"";width:1.25em;height:1px;background:currentColor}
+  header.top{padding:2rem 0;border-bottom:1px solid var(--line)}
+  header.top .container{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:1rem}
+  header.top h1{font-size:clamp(1.5rem,2.5vw,2rem)}
+  header.top a{font-family:var(--mono);font-size:.85rem;text-decoration:none;color:var(--muted);letter-spacing:.06em}
+  header.top a:hover{color:var(--ink)}
+
+  .hero{padding-block:5rem 4rem}
+  .hero h2{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;line-height:1.15;max-width:18ch;margin-top:1.5rem}
+  .hero p{margin-top:2rem;max-width:55ch;color:var(--ink-2);font-size:1.0625rem}
+
+  .section{padding-block:4rem;border-top:1px solid var(--line)}
+  .section__head{display:grid;gap:1rem;margin-bottom:2.5rem}
+  @media(min-width:900px){.section__head{grid-template-columns:5fr 7fr;align-items:end;gap:3rem}}
+  .section__head h3{font-size:clamp(1.75rem,3vw,2.5rem)}
+  .section__head p{color:var(--muted);max-width:50ch}
+  .num{font-family:var(--mono);font-size:.75rem;color:var(--muted);letter-spacing:.18em}
+
+  /* color swatches */
+  .swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+  .swatch{background:var(--surface);padding:1.25rem;display:flex;flex-direction:column;justify-content:flex-end;min-height:160px}
+  .swatch__chip{width:36px;height:36px;border:1px solid var(--line);margin-bottom:auto}
+  .swatch__name{font-family:var(--serif);font-size:1.125rem;margin-top:1rem}
+  .swatch__hex{font-family:var(--mono);font-size:.75rem;color:var(--muted);letter-spacing:.05em}
+  .swatch__use{font-size:.85rem;color:var(--muted);margin-top:.5rem}
+
+  /* type specimens */
+  .types{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+  @media(min-width:720px){.types{grid-template-columns:1fr 1fr}}
+  .type{background:var(--surface);padding:2rem}
+  .type__sample{font-size:clamp(2.5rem,5vw,3.5rem);line-height:1.15;margin-bottom:1rem}
+  .type--serif .type__sample{font-family:var(--serif);font-weight:700}
+  .type--sans .type__sample{font-family:var(--sans);font-weight:500}
+  .type--mono .type__sample{font-family:var(--mono);font-weight:500;font-size:clamp(1.25rem,2vw,1.5rem)}
+  .type__meta{font-family:var(--mono);font-size:.75rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-bottom:1rem}
+  .type__use{font-size:.9rem;color:var(--ink-2);max-width:36ch}
+
+  /* scale */
+  .scale{display:grid;gap:.5rem}
+  .scale__row{display:flex;align-items:baseline;gap:1.5rem;border-bottom:1px solid var(--line);padding:.75rem 0}
+  .scale__label{font-family:var(--mono);font-size:.7rem;color:var(--muted);width:80px;flex-shrink:0;letter-spacing:.1em}
+  .scale__sample{font-family:var(--serif);font-weight:700;line-height:1.1;flex:1;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+  .scale__usage{font-size:.8rem;color:var(--muted)}
+
+  /* sitemap */
+  .sitemap{display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+  @media(min-width:720px){.sitemap{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:1024px){.sitemap{grid-template-columns:repeat(3,1fr)}}
+  .page{background:var(--surface);padding:1.5rem;display:grid;gap:.5rem}
+  .page__num{font-family:var(--mono);font-size:.7rem;color:var(--muted);letter-spacing:.15em}
+  .page h4{font-size:1.125rem;font-family:var(--serif)}
+  .page__path{font-family:var(--mono);font-size:.75rem;color:var(--pitch)}
+  .page ul{margin:.5rem 0 0;padding-left:1.1rem;color:var(--muted);font-size:.85rem;line-height:1.7}
+
+  /* wireframes */
+  .wires{display:grid;gap:2rem}
+  @media(min-width:900px){.wires{grid-template-columns:1fr 1fr}}
+  .wire{background:var(--surface);border:1px solid var(--line);overflow:hidden}
+  .wire__title{padding:1rem 1.25rem;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:baseline}
+  .wire__title h4{font-size:1rem;font-family:var(--sans)}
+  .wire__title small{font-family:var(--mono);font-size:.7rem;color:var(--muted);letter-spacing:.1em}
+  .wire__svg{width:100%;display:block;background:var(--bg-2)}
+
+  /* tables */
+  .table{width:100%;border-collapse:collapse;font-size:.9rem}
+  .table th,.table td{text-align:left;padding:.85rem 1rem;border-bottom:1px solid var(--line);vertical-align:top}
+  .table th{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500;background:var(--bg-2)}
+  .table code{font-family:var(--mono);font-size:.8rem;color:var(--pitch);background:var(--bg-2);padding:.1em .4em}
+
+  /* code block */
+  pre{background:var(--ink);color:#EAE6DA;padding:1.25rem;font-family:var(--mono);font-size:.78rem;line-height:1.65;overflow-x:auto;border-radius:2px}
+  pre b{color:#A8C8B0;font-weight:500}
+
+  /* checklist */
+  .checks{display:grid;gap:.5rem}
+  .check{display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:baseline;padding:.85rem 0;border-bottom:1px solid var(--line)}
+  .check__no{font-family:var(--mono);font-size:.7rem;color:var(--muted);letter-spacing:.12em}
+  .check__title{font-family:var(--serif);font-weight:500;font-size:1rem}
+  .check__desc{grid-column:2;color:var(--muted);font-size:.85rem;margin-top:.2rem}
+  .check__tag{font-family:var(--mono);font-size:.7rem;color:var(--pitch);letter-spacing:.1em}
+
+  /* CTA at end */
+  .end{padding-block:5rem;text-align:center}
+  .end h3{font-size:clamp(1.75rem,3vw,2.5rem);max-width:24ch;margin-inline:auto}
+  .end a{display:inline-flex;align-items:center;gap:.6em;margin-top:2rem;padding:1em 1.6em;background:var(--ink);color:var(--bg);text-decoration:none;font-size:.9rem;letter-spacing:.04em}
+  .end a:hover{background:var(--pitch)}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="container">
+    <h1>千葉サッカークラブ ／ Web Design Brief</h1>
+    <a href="index.html">← LIVE プレビュー (index.html)</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">DESIGN BRIEF / 2026</span>
+    <h2>静かに、信頼を積み重ねる<br/>クラブのためのHP。</h2>
+    <p>本書は千葉サッカークラブのリニューアル提案です。「おしゃれ」で完結させず、入会・体験・問い合わせという結果に直結する設計になっているか──その観点で各セクションを定義しています。</p>
+  </div>
+</section>
+
+<!-- 01 UIコンセプト -->
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <div>
+        <span class="num">01 / CONCEPT</span>
+        <h3 style="margin-top:.5rem">UIコンセプト</h3>
+      </div>
+      <p>キーワードは <b style="color:var(--ink)">「静（しずか）」</b>。声高に主張するのではなく、26年積み重ねた事実を、余白と書体の選択でそのまま魅せる。Apple的な情報整理、建築系ブランドの間（ま）、SaaSの操作性──三つの語彙を借りつつ、ジュニアスポーツの温度を残します。</p>
+    </div>
+
+    <div style="display:grid;gap:1px;background:var(--line);border:1px solid var(--line)">
+      <div style="padding:1.5rem 1.5rem;background:var(--surface);display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:center">
+        <span class="num">01</span>
+        <div>
+          <h4 style="font-size:1.25rem;margin-bottom:.25rem">余白を設計言語にする</h4>
+          <p style="color:var(--muted);font-size:.9rem">セクション間の縦余白は最小7rem、最大10rem。要素の少なさが信頼の表現になる。</p>
+        </div>
+      </div>
+      <div style="padding:1.5rem 1.5rem;background:var(--surface);display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:center">
+        <span class="num">02</span>
+        <div>
+          <h4 style="font-size:1.25rem;margin-bottom:.25rem">和文セリフで品格を、サンセリフで読みやすさを</h4>
+          <p style="color:var(--muted);font-size:.9rem">見出しは Noto Serif JP、本文は Noto Sans JP の二段構え。長時間スクロールしても疲れない。</p>
+        </div>
+      </div>
+      <div style="padding:1.5rem 1.5rem;background:var(--surface);display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:center">
+        <span class="num">03</span>
+        <div>
+          <h4 style="font-size:1.25rem;margin-bottom:.25rem">数字とラベルは等幅で「事実」として置く</h4>
+          <p style="color:var(--muted);font-size:.9rem">年数、人数、カテゴリー。装飾せず、JetBrains Monoで淡々と並べることで誇張のない説得力を生む。</p>
+        </div>
+      </div>
+      <div style="padding:1.5rem 1.5rem;background:var(--surface);display:grid;grid-template-columns:auto 1fr;gap:1.5rem;align-items:center">
+        <span class="num">04</span>
+        <div>
+          <h4 style="font-size:1.25rem;margin-bottom:.25rem">アニメは「気付かれない量」だけ</h4>
+          <p style="color:var(--muted);font-size:.9rem">スクロールで要素がそっと立ち上がる程度。CTAボタンの矢印が4px動くだけ。それ以上はやらない。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 カラー -->
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <div>
+        <span class="num">02 / COLOR</span>
+        <h3 style="margin-top:.5rem">カラーパレット</h3>
+      </div>
+      <p>暖色寄りのオフホワイトを土台に、深い緑（芝のメタファー）を一点だけアクセントに。彩度は最低限。「広告色」を排し、「制服」のような不変性を持たせます。</p>
+    </div>
+
+    <div class="swatches">
+      <div class="swatch"><div class="swatch__chip" style="background:#F5F2EA"></div><div class="swatch__name">Bone</div><div class="swatch__hex">#F5F2EA</div><div class="swatch__use">主背景</div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#EBE7DB"></div><div class="swatch__name">Sand</div><div class="swatch__hex">#EBE7DB</div><div class="swatch__use">セクション分節</div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#FFFFFF;border:1px solid var(--line)"></div><div class="swatch__name">Paper</div><div class="swatch__hex">#FFFFFF</div><div class="swatch__use">カード面</div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#14130F"></div><div class="swatch__name">Ink</div><div class="swatch__hex">#14130F</div><div class="swatch__use">主文字／CTA</div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#6E6A60"></div><div class="swatch__name">Stone</div><div class="swatch__hex">#6E6A60</div><div class="swatch__use">補助文字</div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#D9D4C5"></div><div class="swatch__name">Line</div><div class="swatch__hex">#D9D4C5</div><div class="swatch__use">境界線</div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:oklch(0.34 0.05 155)"></div><div class="swatch__name">Pitch</div><div class="swatch__hex">oklch(.34 .05 155)</div><div class="swatch__use">アクセント／ホバー</div></div>
+    </div>
+    <p style="margin-top:1.25rem;color:var(--muted);font-size:.85rem">アクセシビリティ：本文 #14130F on #F5F2EA = コントラスト比 15.3:1（AAA）。Stone on Bone でも 4.6:1 以上を維持。</p>
+  </div>
+</section>
+
+<!-- 03 タイポ -->
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <div>
+        <span class="num">03 / TYPE</span>
+        <h3 style="margin-top:.5rem">フォント提案</h3>
+      </div>
+      <p>三書体構成。和文セリフで体温、和文サンセリフで実直、等幅で事実──それぞれの役割を一行で説明できる組合せにしています。Google Fontsからの配信で表示速度を確保。</p>
+    </div>
+
+    <div class="types">
+      <div class="type type--serif">
+        <div class="type__meta">DISPLAY ／ NOTO SERIF JP</div>
+        <div class="type__sample">育てるのは、人間性。</div>
+        <div class="type__use">ヒーロー、セクション見出し、カードタイトル。weight 500/700/900を運用。</div>
+      </div>
+      <div class="type type--sans">
+        <div class="type__meta">BODY ／ NOTO SANS JP</div>
+        <div class="type__sample">読みやすく、長時間。</div>
+        <div class="type__use">本文、ナビ、フォーム。weight 400/500/700。fontfeature「palt」で和文の詰めを最適化。</div>
+      </div>
+      <div class="type type--mono">
+        <div class="type__meta">DATA ／ JETBRAINS MONO</div>
+        <div class="type__sample">EST. 1999 / U-6 → U-15</div>
+        <div class="type__use">日付、スコア、ラベル、数値。letter-spacing 0.12em で「データ感」を演出。</div>
+      </div>
+      <div class="type">
+        <div class="type__meta">SCALE ／ FLUID</div>
+        <div class="scale">
+          <div class="scale__row"><span class="scale__label">step-6</span><span class="scale__sample" style="font-size:3.5rem">Hero 56–112px</span><span class="scale__usage">FV</span></div>
+          <div class="scale__row"><span class="scale__label">step-5</span><span class="scale__sample" style="font-size:2.5rem">Section 44–80px</span><span class="scale__usage">大見出し</span></div>
+          <div class="scale__row"><span class="scale__label">step-4</span><span class="scale__sample" style="font-size:2rem">Section 32–48px</span><span class="scale__usage">中見出し</span></div>
+          <div class="scale__row"><span class="scale__label">step-3</span><span class="scale__sample" style="font-size:1.5rem">Sub 24–32px</span><span class="scale__usage">カード</span></div>
+          <div class="scale__row"><span class="scale__label">step-2</span><span class="scale__sample" style="font-size:1.25rem;font-family:var(--sans);font-weight:500">Lead 18–22px</span><span class="scale__usage">リード文</span></div>
+          <div class="scale__row"><span class="scale__label">step-1</span><span class="scale__sample" style="font-size:1rem;font-family:var(--sans);font-weight:400">Body 16–17px</span><span class="scale__usage">本文</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 ページ構成 -->
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <div>
+        <span class="num">04 / SITEMAP</span>
+        <h3 style="margin-top:.5rem">ページ構成</h3>
+      </div>
+      <p>トップページに必要情報を凝縮。下層は WordPress の固定ページとカスタム投稿（matches / news / staff / category）で運用、各セクションは固定ページのHTMLブロックとしてもそのまま流用できます。</p>
+    </div>
+
+    <div class="sitemap">
+      <div class="page"><span class="page__num">PAGE 01</span><h4>HOME</h4><span class="page__path">/</span><ul><li>ヒーロー / 統計バー</li><li>クラブ理念 / 3 Pillars</li><li>カテゴリー一覧</li><li>試合結果・予定</li><li>お知らせ</li><li>アクセス</li><li>体験CTA</li></ul></div>
+      <div class="page"><span class="page__num">PAGE 02</span><h4>クラブ紹介</h4><span class="page__path">/about/</span><ul><li>歴史（年表）</li><li>理念詳細</li><li>スタッフ紹介</li><li>クラブのお約束</li></ul></div>
+      <div class="page"><span class="page__num">PAGE 03</span><h4>チーム</h4><span class="page__path">/teams/[category]/</span><ul><li>カテゴリー別 詳細</li><li>練習スケジュール</li><li>会費・年間計画</li><li>体験申込導線</li></ul></div>
+      <div class="page"><span class="page__num">PAGE 04</span><h4>スケジュール</h4><span class="page__path">/matches/</span><ul><li>結果アーカイブ</li><li>予定一覧</li><li>カテゴリー絞り込み</li></ul></div>
+      <div class="page"><span class="page__num">PAGE 05</span><h4>お知らせ</h4><span class="page__path">/news/</span><ul><li>記事一覧（タグ別）</li><li>記事詳細</li><li>RSS</li></ul></div>
+      <div class="page"><span class="page__num">PAGE 06</span><h4>入会・お問い合わせ</h4><span class="page__path">/contact/</span><ul><li>体験申込フォーム</li><li>資料請求</li><li>一般問い合わせ</li><li>FAQ</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 ワイヤー -->
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <div>
+        <span class="num">05 / WIREFRAME</span>
+        <h3 style="margin-top:.5rem">ワイヤーフレーム（主要ビュー）</h3>
+      </div>
+      <p>視線誘導はZ字（PC）と縦軸（SP）。ファーストビューに「価値の一文＋一次CTA」、2スクロール以内に「カテゴリー一覧→体験CTA」を配置するのを最低基準としました。</p>
+    </div>
+
+    <div class="wires">
+      <!-- PC wire -->
+      <div class="wire">
+        <div class="wire__title"><h4>HOME ／ Desktop 1440</h4><small>1440 × 900</small></div>
+        <svg class="wire__svg" viewBox="0 0 1440 1800" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <rect width="1440" height="1800" fill="#EBE7DB"/>
+          <!-- header -->
+          <rect x="0" y="0" width="1440" height="72" fill="#F5F2EA"/>
+          <rect x="80" y="28" width="160" height="16" fill="#14130F"/>
+          <rect x="900" y="32" width="60"  height="10" fill="#6E6A60"/>
+          <rect x="980" y="32" width="60"  height="10" fill="#6E6A60"/>
+          <rect x="1060" y="32" width="60" height="10" fill="#6E6A60"/>
+          <rect x="1140" y="32" width="60" height="10" fill="#6E6A60"/>
+          <rect x="1240" y="20" width="120" height="32" fill="#14130F"/>
+          <!-- hero -->
+          <rect x="80" y="120" width="200" height="10" fill="#6E6A60"/>
+          <rect x="80" y="180" width="900" height="60" fill="#14130F"/>
+          <rect x="80" y="260" width="700" height="50" fill="#14130F"/>
+          <rect x="80" y="360" width="600" height="14" fill="#6E6A60"/>
+          <rect x="80" y="385" width="400" height="14" fill="#6E6A60"/>
+          <rect x="80" y="450" width="200" height="48" fill="#14130F"/>
+          <rect x="290" y="450" width="160" height="48" fill="none" stroke="#14130F" stroke-width="1.5"/>
+          <!-- hero image -->
+          <rect x="80" y="560" width="1280" height="500" fill="#0E1F18"/>
+          <line x1="80" y1="560" x2="1360" y2="1060" stroke="#1d3a2c" stroke-width="1"/>
+          <line x1="1360" y1="560" x2="80" y2="1060" stroke="#1d3a2c" stroke-width="1"/>
+          <!-- stats -->
+          <rect x="80" y="1110" width="1280" height="1" fill="#D9D4C5"/>
+          <rect x="80" y="1140" width="80" height="44" fill="#14130F"/>
+          <rect x="80" y="1200" width="120" height="10" fill="#6E6A60"/>
+          <rect x="400" y="1140" width="80" height="44" fill="#14130F"/>
+          <rect x="400" y="1200" width="120" height="10" fill="#6E6A60"/>
+          <rect x="720" y="1140" width="80" height="44" fill="#14130F"/>
+          <rect x="720" y="1200" width="120" height="10" fill="#6E6A60"/>
+          <rect x="1040" y="1140" width="80" height="44" fill="#14130F"/>
+          <rect x="1040" y="1200" width="120" height="10" fill="#6E6A60"/>
+          <rect x="80" y="1240" width="1280" height="1" fill="#D9D4C5"/>
+          <!-- philosophy -->
+          <rect x="80" y="1320" width="500" height="70" fill="#14130F"/>
+          <rect x="700" y="1340" width="600" height="14" fill="#6E6A60"/>
+          <rect x="700" y="1370" width="540" height="14" fill="#6E6A60"/>
+          <rect x="700" y="1400" width="580" height="14" fill="#6E6A60"/>
+          <!-- pillars -->
+          <rect x="80" y="1480" width="420" height="220" fill="#F5F2EA" stroke="#D9D4C5"/>
+          <rect x="510" y="1480" width="420" height="220" fill="#F5F2EA" stroke="#D9D4C5"/>
+          <rect x="940" y="1480" width="420" height="220" fill="#F5F2EA" stroke="#D9D4C5"/>
+        </svg>
+      </div>
+
+      <!-- Mobile wire -->
+      <div class="wire">
+        <div class="wire__title"><h4>HOME ／ Mobile 390</h4><small>390 × auto</small></div>
+        <svg class="wire__svg" viewBox="0 0 390 1400" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <rect width="390" height="1400" fill="#F5F2EA"/>
+          <!-- header -->
+          <rect x="0" y="0" width="390" height="60" fill="#EBE7DB"/>
+          <rect x="20" y="22" width="120" height="14" fill="#14130F"/>
+          <rect x="334" y="16" width="36" height="36" fill="none" stroke="#14130F"/>
+          <!-- meta -->
+          <rect x="20" y="100" width="160" height="8" fill="#6E6A60"/>
+          <!-- title -->
+          <rect x="20" y="130" width="350" height="44" fill="#14130F"/>
+          <rect x="20" y="180" width="280" height="44" fill="#14130F"/>
+          <!-- lead -->
+          <rect x="20" y="260" width="320" height="10" fill="#6E6A60"/>
+          <rect x="20" y="280" width="280" height="10" fill="#6E6A60"/>
+          <!-- CTA -->
+          <rect x="20" y="320" width="200" height="48" fill="#14130F"/>
+          <!-- image -->
+          <rect x="20" y="400" width="350" height="200" fill="#0E1F18"/>
+          <!-- pillar -->
+          <rect x="20" y="640" width="120" height="10" fill="#6E6A60"/>
+          <rect x="20" y="670" width="280" height="32" fill="#14130F"/>
+          <rect x="20" y="720" width="350" height="120" fill="#FFFFFF" stroke="#D9D4C5"/>
+          <rect x="20" y="860" width="350" height="120" fill="#FFFFFF" stroke="#D9D4C5"/>
+          <rect x="20" y="1000" width="350" height="120" fill="#FFFFFF" stroke="#D9D4C5"/>
+          <!-- floating CTA hint -->
+          <rect x="20" y="1180" width="350" height="160" fill="#14130F"/>
+          <rect x="40" y="1220" width="200" height="20" fill="#F5F2EA"/>
+          <rect x="40" y="1260" width="160" height="36" fill="#F5F2EA"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 UX意図 -->
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <div>
+        <span class="num">06 / UX INTENT</span>
+        <h3 style="margin-top:.5rem">UI/UXの意図</h3>
+      </div>
+      <p>意匠ではなく「なぜそこにあるか」で説明できる構成にしています。すべての要素はCV（体験会／資料請求／問い合わせ）からの距離で序列を決めています。</p>
+    </div>
+
+    <div class="checks">
+      <div class="check"><span class="check__no">UX 01</span><div><div class="check__title">FVの一文で「何を提供する場か」が伝わる</div><div class="check__desc">「育てるのはサッカーの先にある人間性」──理念を主体にした宣言。スポーツ写真は背景にとどめ、文字を主役にして信頼を担保。</div></div><span class="check__tag">FV</span></div>
+      <div class="check"><span class="check__no">UX 02</span><div><div class="check__title">主CTAは3度出現（FV・各カード・末尾バンド）</div><div class="check__desc">スクロール量に応じて「興味→理解→決断」の段階に合わせ自然に再提示。フローティングCTAは品位を損なうため不採用。</div></div><span class="check__tag">CTA</span></div>
+      <div class="check"><span class="check__no">UX 03</span><div><div class="check__title">数字バーで「客観的事実」を早期提示</div><div class="check__desc">活動26年・在籍320名・輩出42名。装飾なく等幅で並べることで広告色を消し、保護者の信頼形成を即時化。</div></div><span class="check__tag">TRUST</span></div>
+      <div class="check"><span class="check__no">UX 04</span><div><div class="check__title">カテゴリー＝入口。各カードがCV直結</div><div class="check__desc">学年・週回数・対象年齢を1カードに集約。クリック後はそのまま該当カテゴリーの体験申込フォームへ。</div></div><span class="check__tag">CV</span></div>
+      <div class="check"><span class="check__no">UX 05</span><div><div class="check__title">タブで「予定／結果」を1セクションに</div><div class="check__desc">縦長を抑え、興味のある軸だけを見せる。スマホで指の移動距離が最短になるよう右上に配置。</div></div><span class="check__tag">SP</span></div>
+      <div class="check"><span class="check__no">UX 06</span><div><div class="check__title">ホバー演出は1種類だけ</div><div class="check__desc">カード→上に3px、ボタン→矢印4px。多種類のhover感は「うるさい」UIの原因なので、語彙を統一。</div></div><span class="check__tag">MOTION</span></div>
+      <div class="check"><span class="check__no">UX 07</span><div><div class="check__title">モバイル：ヘッダーは72px固定／ドロワーはフルスクリーン</div><div class="check__desc">タップターゲットは44px以上。ドロワー内のリンクは1リンク=1区画で誤タップを防止。</div></div><span class="check__tag">SP</span></div>
+      <div class="check"><span class="check__no">UX 08</span><div><div class="check__title">アクセシビリティ：スキップリンク／aria-label／フォーカスリング</div><div class="check__desc">キーボード操作と読み上げに対応。コントラスト比はAA以上を必須、本文はAAA。</div></div><span class="check__tag">A11Y</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 07 SEO -->
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <div>
+        <span class="num">07 / SEO</span>
+        <h3 style="margin-top:.5rem">SEO設計</h3>
+      </div>
+      <p>地域＋カテゴリー（千葉 ジュニアユース／千葉 サッカースクール 等）で検索される前提で、構造化データと階層を整理。Core Web Vitals 観点でも、外部依存の重いライブラリは未使用。</p>
+    </div>
+
+    <table class="table">
+      <thead><tr><th>項目</th><th>方針</th></tr></thead>
+      <tbody>
+        <tr><td><b>HTML構造</b></td><td><code>&lt;header&gt;</code> / <code>&lt;main&gt;</code> / <code>&lt;section aria-labelledby&gt;</code> / <code>&lt;footer&gt;</code> のセマンティック構造。各セクションに <code>data-screen-label</code> を付与し計測・運用も容易。</td></tr>
+        <tr><td><b>見出し階層</b></td><td>1ページに <code>h1</code> は1つ（ヒーロー）。<code>h2</code> はセクション、<code>h3</code> はカード/小見出し。<code>h4</code> はフッターラベル。</td></tr>
+        <tr><td><b>meta title</b></td><td>「千葉サッカークラブ ｜ 育てるのは、サッカーの先にある人間性。」 — 32文字以内、地域名＋クラブ名＋価値の一文。</td></tr>
+        <tr><td><b>meta description</b></td><td>「地域に根ざし1999年から続く育成クラブ…」90〜120字。年代・対象学年・CV語句（体験会・入会）を含める。</td></tr>
+        <tr><td><b>OGP</b></td><td><code>og:title / og:description / og:type / og:locale=ja_JP</code> を実装。記事下層では <code>og:image</code> を記事サムネに動的差替。</td></tr>
+        <tr><td><b>構造化データ</b></td><td><code>SportsClub</code> schema を実装。下層では <code>SportsEvent</code>（試合）<code>NewsArticle</code>（お知らせ）に展開。</td></tr>
+        <tr><td><b>画像</b></td><td>すべての <code>img</code> に <code>alt</code> 必須。<code>loading="lazy"</code> と <code>width/height</code> 指定でCLS=0。WebP/AVIF配信（WP側でプラグイン制御）。</td></tr>
+        <tr><td><b>表示速度</b></td><td>外部JSはなし（React/BabelはTweaks用のみ、本番ではビルド時に削除可）。フォントは <code>preconnect</code>＋<code>font-display:swap</code>。</td></tr>
+        <tr><td><b>内部リンク</b></td><td>FV→カテゴリー→体験CTAの動線で「入会」を中心としたサイト構造に。お知らせ詳細→関連カテゴリー→体験申込の3クリック以内導線。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 08 Code -->
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <div>
+        <span class="num">08 / CODE</span>
+        <h3 style="margin-top:.5rem">HTML/CSS/JS</h3>
+      </div>
+      <p>すべて <code>index.html</code> に実装済みです。CSSはBEM寄りのフラットな命名（<code>.block</code> / <code>.block__elem</code> / <code>.block--mod</code>）。デザイントークンはルート変数で集約。</p>
+    </div>
+
+    <pre><b>:root</b> {
+  /* color */
+  --bg: #F5F2EA; --ink: #14130F; --pitch: oklch(.34 .05 155);
+  /* type */
+  --serif: "Noto Serif JP"; --sans: "Noto Sans JP"; --mono: "JetBrains Mono";
+  /* fluid scale */
+  --step-5: clamp(2.75rem, 2rem + 3.2vw, 5rem);
+  /* 8px spacing system */
+  --s-4: 1rem; --s-6: 2rem; --s-9: 7rem;
+}
+
+<b>.btn</b> {
+  display:inline-flex; padding:.9em 1.5em;
+  background: var(--ink); color: var(--bg);
+  transition: background .5s cubic-bezier(.2,.6,.2,1);
+}
+<b>.btn:hover</b> { background: var(--pitch); }
+<b>.btn--ghost</b> { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+
+<b>.card</b> {
+  background: var(--surface); border: 1px solid var(--line);
+  padding: var(--s-5); display: grid; gap: var(--s-4);
+  transition: transform .5s var(--ease);
+}
+<b>.card:hover</b> { transform: translateY(-3px); border-color: var(--ink); }</pre>
+
+    <p style="margin-top:1rem;font-size:.85rem;color:var(--muted)">完全版は <a href="index.html" style="color:var(--pitch)">index.html</a> を参照。3つの <code>&lt;style&gt;</code> ブロック（tokens / base / components）に分割し、保守単位を明確化しています。</p>
+  </div>
+</section>
+
+<!-- 09 WordPress -->
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <div>
+        <span class="num">09 / WORDPRESS</span>
+        <h3 style="margin-top:.5rem">WordPress化の構成案</h3>
+      </div>
+      <p>クラシックテーマ前提、ブロックエディタにも対応可。各セクションをパーツテンプレート化し、固定ページからもACFやブロックパターンで再利用できるように設計。</p>
+    </div>
+
+    <pre><b>theme/</b>
+├── style.css                    <span style="color:#888">/* テーマ定義 */</span>
+├── functions.php                <span style="color:#888">/* CPT登録, enqueue, ACF */</span>
+├── front-page.php               <span style="color:#888">/* HOME */</span>
+├── page-about.php               <span style="color:#888">/* クラブ紹介 */</span>
+├── page-contact.php             <span style="color:#888">/* 入会・お問い合わせ */</span>
+├── single-match.php             <span style="color:#888">/* 試合詳細 */</span>
+├── archive-news.php             <span style="color:#888">/* お知らせ一覧 */</span>
+├── single-news.php              <span style="color:#888">/* お知らせ詳細 */</span>
+├── taxonomy-category_age.php    <span style="color:#888">/* U-9 など */</span>
+├── header.php / footer.php
+└── <b>template-parts/</b>
+    ├── hero.php
+    ├── stats.php
+    ├── philosophy.php
+    ├── card-category.php       <span style="color:#888">/* カード再利用 */</span>
+    ├── matches-list.php
+    ├── news-list.php
+    ├── access.php
+    └── ctaband.php
+
+<b>カスタム投稿タイプ</b>
+  ・category   : チームカテゴリー（U-6〜U-15、ガールズ等）
+  ・match      : 試合（meta: date / opponent / category / score / venue）
+  ・news       : お知らせ（taxonomy: news_tag = club/event/press）
+  ・staff      : スタッフ紹介
+
+<b>ACF（または block.json）</b>
+  ・hero.title / hero.lead / hero.image
+  ・philosophy.title / pillars[].title / pillars[].body
+  ・cta.headline / cta.sub / cta.primary_label / cta.primary_url
+
+<b>運用フロー（編集者目線）</b>
+  1. お知らせを書く  →  /news/ 一覧と HOME のお知らせブロックに自動表示
+  2. 試合結果を入力  →  HOME の「結果」タブに自動反映
+  3. カテゴリー情報の更新は  カスタム投稿「category」だけで完結
+  4. ヒーロー文言・CTA文言は  HOME の固定ブロックから直接編集</pre>
+  </div>
+</section>
+
+<!-- 10 Extension -->
+<section class="section">
+  <div class="container">
+    <div class="section__head">
+      <div>
+        <span class="num">10 / SCALABILITY</span>
+        <h3 style="margin-top:.5rem">今後拡張しやすい設計ポイント</h3>
+      </div>
+      <p>来年「OB会ページ」「保護者向けマイページ」などを追加しても、本実装の土台はそのまま使えます。トークンとパーツの分離が肝です。</p>
+    </div>
+
+    <div class="checks">
+      <div class="check"><span class="check__no">EXT 01</span><div><div class="check__title">トークンを変数に集約</div><div class="check__desc">色・余白・書体は <code>:root</code> の CSS Variables で管理。ダークモード／別ブランド展開（OB会・スクール）も<code>--bg/--ink</code>を差し替えるだけ。</div></div><span class="check__tag">CSS</span></div>
+      <div class="check"><span class="check__no">EXT 02</span><div><div class="check__title">セクション=パーツ単位</div><div class="check__desc">ヒーロー/カード/CTAバンドはどのページにも置ける独立ブロック。新規ページを作る際の組合せ自由度が高い。</div></div><span class="check__tag">PARTS</span></div>
+      <div class="check"><span class="check__no">EXT 03</span><div><div class="check__title">CPTで運用する情報設計</div><div class="check__desc">match / news / category / staff の4CPTを基礎に。動画・写真ギャラリーは「media」CPTを足すだけで開発完了。</div></div><span class="check__tag">WP</span></div>
+      <div class="check"><span class="check__no">EXT 04</span><div><div class="check__title">多言語化への余地</div><div class="check__desc">Polylang / WPML を導入してもレイアウトが破綻しないよう、英文混在を想定した字間・段落幅で設計済み。</div></div><span class="check__tag">i18n</span></div>
+      <div class="check"><span class="check__no">EXT 05</span><div><div class="check__title">フォームはMW WP Form/Contact Form 7置換可</div><div class="check__desc">既存 <code>.btn</code> / <code>.input</code> 設計に合わせれば、CRMやLINE通知との連携拡張もブランドが崩れない。</div></div><span class="check__tag">FORM</span></div>
+      <div class="check"><span class="check__no">EXT 06</span><div><div class="check__title">マイページ／会員サイト化</div><div class="check__desc">将来的に保護者ログイン・月謝管理を加える場合、現在のサーフェス（Paper #FFF）にカードUIを足す形で違和感なく拡張できる。</div></div><span class="check__tag">FUTURE</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="end">
+  <div class="container">
+    <h3>続きはピッチで。</h3>
+    <a href="index.html">LIVE プレビューを開く →</a>
+  </div>
+</section>
+
+</body>
+</html>
